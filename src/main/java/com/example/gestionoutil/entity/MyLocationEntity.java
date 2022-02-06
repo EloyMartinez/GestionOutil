@@ -1,24 +1,24 @@
-package entity;
+package com.example.gestionoutil.entity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "achat", schema = "gestionoutils", catalog = "")
-public class MyAchatEntity {
+@Table(name = "location", schema = "gestionoutils", catalog = "")
+public class MyLocationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "idachat")
-    private int idachat;
+    @Column(name = "idloc")
+    private int idloc;
     @Basic
     @Column(name = "idcom")
     private Integer idcom;
 
-    public int getIdachat() {
-        return idachat;
+    public int getIdloc() {
+        return idloc;
     }
 
-    public void setIdachat(int idachat) {
-        this.idachat = idachat;
+    public void setIdloc(int idloc) {
+        this.idloc = idloc;
     }
 
     public Integer getIdcom() {
@@ -34,9 +34,9 @@ public class MyAchatEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        MyAchatEntity that = (MyAchatEntity) o;
+        MyLocationEntity that = (MyLocationEntity) o;
 
-        if (idachat != that.idachat) return false;
+        if (idloc != that.idloc) return false;
         if (idcom != null ? !idcom.equals(that.idcom) : that.idcom != null) return false;
 
         return true;
@@ -44,7 +44,7 @@ public class MyAchatEntity {
 
     @Override
     public int hashCode() {
-        int result = idachat;
+        int result = idloc;
         result = 31 * result + (idcom != null ? idcom.hashCode() : 0);
         return result;
     }

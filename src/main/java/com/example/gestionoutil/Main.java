@@ -1,4 +1,7 @@
-import entity.MyActeurEntity;
+package com.example.gestionoutil;
+
+import com.example.gestionoutil.entity.MyActeurEntity;
+
 
 import javax.persistence.*;
 
@@ -7,7 +10,6 @@ public class Main {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("GestionOutil");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-
         try {
             transaction.begin();
 

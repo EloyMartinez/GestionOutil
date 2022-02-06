@@ -1,4 +1,4 @@
-package entity;
+package com.example.gestionoutil.entity;
 
 import javax.persistence.*;
 import java.sql.Date;

@@ -1,10 +1,10 @@
-package entity;
+package com.example.gestionoutil.entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "conseilleclient", schema = "gestionoutils", catalog = "")
-public class MyConseilleclientEntity {
+public class MyConseilleClientEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "idco")
@@ -56,7 +56,7 @@ public class MyConseilleclientEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        MyConseilleclientEntity that = (MyConseilleclientEntity) o;
+        MyConseilleClientEntity that = (MyConseilleClientEntity) o;
 
         if (idco != that.idco) return false;
         if (nomco != null ? !nomco.equals(that.nomco) : that.nomco != null) return false;

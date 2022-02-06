@@ -1,35 +1,24 @@
-package entity;
+package com.example.gestionoutil.entity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "inventaire", schema = "gestionoutils", catalog = "")
-public class MyInventaireEntity {
+@Table(name = "manuel", schema = "gestionoutils", catalog = "")
+public class MyManuelEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "idinv")
-    private int idinv;
-    @Basic
-    @Column(name = "ida")
-    private Integer ida;
+    @Column(name = "idmanuel")
+    private int idmanuel;
     @Basic
     @Column(name = "idoutil")
     private Integer idoutil;
 
-    public int getIdinv() {
-        return idinv;
+    public int getIdmanuel() {
+        return idmanuel;
     }
 
-    public void setIdinv(int idinv) {
-        this.idinv = idinv;
-    }
-
-    public Integer getIda() {
-        return ida;
-    }
-
-    public void setIda(Integer ida) {
-        this.ida = ida;
+    public void setIdmanuel(int idmanuel) {
+        this.idmanuel = idmanuel;
     }
 
     public Integer getIdoutil() {
@@ -45,10 +34,9 @@ public class MyInventaireEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        MyInventaireEntity that = (MyInventaireEntity) o;
+        MyManuelEntity that = (MyManuelEntity) o;
 
-        if (idinv != that.idinv) return false;
-        if (ida != null ? !ida.equals(that.ida) : that.ida != null) return false;
+        if (idmanuel != that.idmanuel) return false;
         if (idoutil != null ? !idoutil.equals(that.idoutil) : that.idoutil != null) return false;
 
         return true;
@@ -56,8 +44,7 @@ public class MyInventaireEntity {
 
     @Override
     public int hashCode() {
-        int result = idinv;
-        result = 31 * result + (ida != null ? ida.hashCode() : 0);
+        int result = idmanuel;
         result = 31 * result + (idoutil != null ? idoutil.hashCode() : 0);
         return result;
     }

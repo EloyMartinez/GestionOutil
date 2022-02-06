@@ -5,15 +5,16 @@
              version="2.2">
     <persistence-unit name="GestionOutil">
 
-        <class>entity.MyActeurEntity</class>
-        <class>entity.MyAchatEntity</class>
+        <class>com.example.gestionoutil.entity.MyActeurEntity</class>
+        <class>com.example.gestionoutil.entity.MyAchatEntity</class>
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:mysql://adade.mysql.database.azure.com:3306/gestionoutils?useSSL=true
-"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://adade.mysql.database.azure.com:3306/gestionoutils?useSSL=true"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <property name="hibernate.connection.user" value="architecte"/>
             <property name="hibernate.connection.password" value="Uqac.2022"/>
             <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
         </properties>
     </persistence-unit>
 </persistence>
