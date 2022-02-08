@@ -7,15 +7,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@RestController
+//@RestController
 public class GestionOutilApplication {
 
 
     public static void main(String[] args) {
         SpringApplication.run(GestionOutilApplication.class, args);
+        System.out.println("hello there");
     }
 
-    @GetMapping("/hello")
+    /*@GetMapping("/hello")
     public String sayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
         return String.format("Hello %s!", name);
     }
@@ -23,5 +24,5 @@ public class GestionOutilApplication {
     @GetMapping("/")
     public String sayDefault(){
         return "Default";
-    }
+    }*/
 }

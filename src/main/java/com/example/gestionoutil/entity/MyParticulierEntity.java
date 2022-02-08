@@ -10,6 +10,9 @@ public class MyParticulierEntity {
     @Column(name = "idpar")
     private int idpar;
     @Basic
+    @Column(name = "motDePasse")
+    private String motDepasse;
+    @Basic
     @Column(name = "idcli")
     private Integer idcli;
 
@@ -19,6 +22,10 @@ public class MyParticulierEntity {
 
     public void setIdpar(int idpar) {
         this.idpar = idpar;
+    }
+
+    public String getMotDepasse() {
+        return motDepasse;
     }
 
     public Integer getIdcli() {

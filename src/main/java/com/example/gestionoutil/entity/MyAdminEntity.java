@@ -10,11 +10,17 @@ public class MyAdminEntity {
     @Column(name = "idad")
     private int idad;
     @Basic
+    @Column(name = "courrieladmin")
+    private String courrieladmin;
+    @Basic
     @Column(name = "nomad")
     private String nomad;
     @Basic
     @Column(name = "prenomad")
     private String prenomad;
+    @Basic
+    @Column(name = "mdpadmin")
+    private String mdpadmin;
     @Basic
     @Column(name = "ida")
     private Integer ida;
@@ -25,6 +31,14 @@ public class MyAdminEntity {
 
     public void setIdad(int idad) {
         this.idad = idad;
+    }
+
+    public String getCourrieladmin() {
+        return courrieladmin;
+    }
+
+    public void setCourrieladmin(String courrieladmin) {
+        this.courrieladmin = courrieladmin;
     }
 
     public String getNomad() {
@@ -41,6 +55,10 @@ public class MyAdminEntity {
 
     public void setPrenomad(String prenomad) {
         this.prenomad = prenomad;
+    }
+
+    public String getMotDepasse() {
+        return mdpadmin;
     }
 
     public Integer getIda() {

@@ -10,11 +10,17 @@ public class MyConseilleClientEntity {
     @Column(name = "idco")
     private int idco;
     @Basic
+    @Column(name = "courrielcc")
+    private String courrielcc;
+    @Basic
     @Column(name = "nomco")
     private String nomco;
     @Basic
     @Column(name = "prenomco")
     private String prenomco;
+    @Basic
+    @Column(name = "mdpcc")
+    private String mdpcc;
     @Basic
     @Column(name = "ida")
     private Integer ida;
@@ -25,6 +31,14 @@ public class MyConseilleClientEntity {
 
     public void setIdco(int idco) {
         this.idco = idco;
+    }
+
+    public String getCourrielcc() {
+        return courrielcc;
+    }
+
+    public void setCourrielcc(String courrielcc) {
+        this.courrielcc = courrielcc;
     }
 
     public String getNomco() {
@@ -41,6 +55,10 @@ public class MyConseilleClientEntity {
 
     public void setPrenomco(String prenomco) {
         this.prenomco = prenomco;
+    }
+
+    public String getMotDepasse() {
+        return mdpcc;
     }
 
     public Integer getIda() {
