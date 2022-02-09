@@ -7,5 +7,5 @@ import org.springframework.data.repository.query.Param;
 
 public interface ConseilleClientRepository extends CrudRepository<MyConseilleClientEntity, Long> {
     @Query("SELECT c FROM MyConseilleClientEntity c WHERE c.courrielcc = :courriel")
-    public MyConseilleClientEntity getConseilleByEmail(@Param("courriel") String courriel);
+    MyConseilleClientEntity getConseilleByEmail(@Param("courriel") String courriel);
 }
