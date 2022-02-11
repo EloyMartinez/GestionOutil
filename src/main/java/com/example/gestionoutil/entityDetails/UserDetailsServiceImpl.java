@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         MyClientEntity client = clientRepository.getClientByEmail(username);
-        if(client != null)
+        if (client != null)
             return new ClientDetails(client);
         MyAdminEntity admin = adminRepository.getAdmintByEmail(username);
         if (admin != null)
