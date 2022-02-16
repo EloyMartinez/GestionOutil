@@ -31,9 +31,9 @@ public class AppController {
 
     @PostMapping("/process_register")
     public String processRegister(MyClientEntity client) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        /*BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(client.getMdpcli());
-        client.setMdpcli(encodedPassword);
+        client.setMdpcli(encodedPassword);*/
 
         clientRepository.save(client);
 
