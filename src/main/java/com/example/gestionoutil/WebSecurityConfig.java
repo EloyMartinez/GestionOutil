@@ -39,13 +39,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        String[] permitted = new String[]{
+                "/", "/register","/register","/about","/images/**",
+                "/css/**","/fonts/**","/vendor/**","/js/**","/images.icons/**"
+        };
         http.authorizeRequests()
-                .antMatchers("/users").authenticated()
-                .anyRequest().permitAll()
+                .antMatchers("/register","/").permitAll()
+                .antMatchers(permitted).permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/users")
                 .and()
                 .logout().permitAll();
     }
+
+//
+//            .authorizeRequests()
+//            .antMatchers( "/","/home")
+//            .permitAll()
+//            .anyRequest()
+//            .authenticated().and()
+//            .formLogin().loginPage( "/login" )
+//            .permitAll().and().logout().permitAll();
+//}
 }
