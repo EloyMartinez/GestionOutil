@@ -39,9 +39,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        String[] permitted = new String[]{
+                "/", "/register","/register","/about","/images/**",
+                "/css/**","/fonts/**","/vendor/**","/js/**","/images.icons/**"
+        };
         http.authorizeRequests()
-                .antMatchers("/users").authenticated()
-                .anyRequest().permitAll()
+                .antMatchers("/register","/").permitAll()
+                .antMatchers(permitted).permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/users")
