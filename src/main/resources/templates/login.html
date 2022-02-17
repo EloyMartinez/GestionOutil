@@ -1,32 +1,100 @@
+<!-- https://colorlib.com/wp/template/login-form-v2/ -->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Connexion</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" th:href="@{/images/icons/favicon.ico}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/animsition/css/animsition.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/daterangepicker/daterangepicker.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <!--===============================================================================================-->
 </head>
 <body>
-<fieldset>
-    <form name="login" th:action="@{/login}" method="post">
-        <legend>Connectez-vous avec votre compte</legend>
 
-        <!--si la connexion échoue -->
-        <div th:if="${param.error}" class="alert alert-error">
-            Mauvais nom d'utilisateur ou mot de passe
-        </div>
-        <!--si l'utilisateur se déconnecte-->
-        <div th:if="${param.logout}" class="alert alert-success">
-            Vous vous êtes déconnecté
-        </div>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" th:action="@{/login}" method="post">
+                <span class="login100-form-title p-b-26">
+                    Welcome
+                </span>
+                <span class="login100-form-title p-b-48">
+                    <i class="zmdi zmdi-font"></i>
+                </span>
 
-        <label for="username">Nom d'utilisateur</label>
-        <input type="text" id="username" name="username">
-        <label for="password">Mot de passe</label>
-        <input type="password" id="password" name="password">
-        <div class="form-action">
-            <button type="submit" class="btn">Se connecter</button>
+                <div class="wrap-input100 validate-input" data-validate="Courriel valide: a@b.c">
+                    <input class="input100" type="text" name="email">
+                    <span class="focus-input100" data-placeholder="Courriel"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Entrez un mot de passe">
+                    <span class="btn-show-pass">
+                        <i class="zmdi zmdi-eye"></i>
+                    </span>
+                    <input class="input100" type="password" name="pass">
+                    <span class="focus-input100" data-placeholder="Mot de passe"></span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn">
+                            Se connecter
+                        </button>
+                    </div>
+                </div>
+
+                <div class="text-center p-t-115">
+                    <span class="txt1">
+                        Vous n'avez pas de compte?
+                    </span>
+                    <a class="txt2" th:href="@{/register}">
+                        Créer un compte
+                    </a>
+                </div>
+            </form>
         </div>
-    </form>
-    <h3><a th:href="@{/register}">Créer un compte</a></h3>
-</fieldset>
+    </div>
+</div>
+
+
+<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/vendor/animsition/js/animsition.min.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/vendor/select2/select2.min.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/vendor/daterangepicker/moment.min.js}"></script>
+<script th:src="@{/vendor/daterangepicker/daterangepicker.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/vendor/countdowntime/countdowntime.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/js/main.js}"></script>
+
 </body>
 </html>
