@@ -7,13 +7,26 @@
 
         <class>com.example.gestionoutil.entity.MyActeurEntity</class>
         <class>com.example.gestionoutil.entity.MyAchatEntity</class>
+        <class>com.example.gestionoutil.entity.MyAdminEntity</class>
+        <class>com.example.gestionoutil.entity.MyClientEntity</class>
+        <class>com.example.gestionoutil.entity.MyCommandeEntity</class>
+        <class>com.example.gestionoutil.entity.MyConseilleClientEntity</class>
+        <class>com.example.gestionoutil.entity.MyElectriqueEntity</class>
+        <class>com.example.gestionoutil.entity.MyEntrepriseEntity</class>
+        <class>com.example.gestionoutil.entity.MyHydrauliqueEntity</class>
+        <class>com.example.gestionoutil.entity.MyInventaireEntity</class>
+        <class>com.example.gestionoutil.entity.MyLocationEntity</class>
+        <class>com.example.gestionoutil.entity.MyManuelEntity</class>
+        <class>com.example.gestionoutil.entity.MyOutilEntity</class>
+        <class>com.example.gestionoutil.entity.MyPanierEntity</class>
+        <class>com.example.gestionoutil.entity.MyParticulierEntity</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://adade.mysql.database.azure.com:3306/gestionoutils?useSSL=true"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <property name="hibernate.connection.user" value="architecte"/>
             <property name="hibernate.connection.password" value="Uqac.2022"/>
             <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
         </properties>
     </persistence-unit>
