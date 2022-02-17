@@ -32,6 +32,12 @@ public class AppController {
         return "users";
     }
 
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
+
     @PostMapping("/process_register")
     public String processRegister(MyClientEntity client) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -41,5 +47,6 @@ public class AppController {
 
         return "register_success";
     }
+
 
 }
