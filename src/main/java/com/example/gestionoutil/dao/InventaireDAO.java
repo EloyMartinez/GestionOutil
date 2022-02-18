@@ -28,12 +28,12 @@ public class InventaireDAO {
         return em.createNativeQuery("select * from inventaire", MyInventaireEntity.class).getResultList();
     }
 
-    public MyInventaireEntity getById(int id){
+    public MyInventaireEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyInventaireEntity.class, id);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 

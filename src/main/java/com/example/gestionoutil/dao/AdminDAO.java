@@ -28,12 +28,12 @@ public class AdminDAO {
         return em.createNativeQuery("select * from admin", MyAdminEntity.class).getResultList();
     }
 
-    public MyAdminEntity getById(int id){
+    public MyAdminEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyAdminEntity.class, id);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 

@@ -28,12 +28,12 @@ public class CommandeDAO {
         return em.createNativeQuery("select * from commande", MyCommandeEntity.class).getResultList();
     }
 
-    public MyCommandeEntity getById(int id){
+    public MyCommandeEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyCommandeEntity.class, id);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 

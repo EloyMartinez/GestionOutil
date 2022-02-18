@@ -28,12 +28,12 @@ public class HydrauliqueDAO {
         return em.createNativeQuery("select * from hydraulique", MyHydrauliqueEntity.class).getResultList();
     }
 
-    public MyHydrauliqueEntity getById(int id){
+    public MyHydrauliqueEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyHydrauliqueEntity.class, id);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 

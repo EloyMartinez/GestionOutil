@@ -28,12 +28,12 @@ public class PanierDAO {
         return em.createNativeQuery("select * from panier", MyPanierEntity.class).getResultList();
     }
 
-    public MyPanierEntity getById(int id){
+    public MyPanierEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyPanierEntity.class, id);
     }
 
-    public void deletePanier(int id){
+    public void deletePanier(Long id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 

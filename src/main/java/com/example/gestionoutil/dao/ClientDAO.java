@@ -32,12 +32,12 @@ public class ClientDAO {
         return em.createNativeQuery("select * from client", MyClientEntity.class).getResultList();
     }
 
-    public MyClientEntity getById(int id){
+    public MyClientEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyClientEntity.class, id);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 

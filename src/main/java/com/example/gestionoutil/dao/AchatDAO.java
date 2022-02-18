@@ -28,12 +28,12 @@ public class AchatDAO {
         return em.createNativeQuery("select * from achat", MyAchatEntity.class).getResultList();
     }
 
-    public MyAchatEntity getById(int id){
+    public MyAchatEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyAchatEntity.class, id);
     }
 
-    public void deleteAchat(int id){
+    public void deleteAchat(Long id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 

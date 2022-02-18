@@ -28,12 +28,12 @@ public class ElectriqueDAO {
         return em.createNativeQuery("select * from electrique", MyElectriqueEntity.class).getResultList();
     }
 
-    public MyElectriqueEntity getById(int id){
+    public MyElectriqueEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyElectriqueEntity.class, id);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 

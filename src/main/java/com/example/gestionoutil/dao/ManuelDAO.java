@@ -28,12 +28,12 @@ public class ManuelDAO {
         return em.createNativeQuery("select * from manuel", MyManuelEntity.class).getResultList();
     }
 
-    public MyManuelEntity getById(int id){
+    public MyManuelEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyManuelEntity.class, id);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 

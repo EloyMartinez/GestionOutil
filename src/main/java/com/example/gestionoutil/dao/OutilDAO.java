@@ -28,12 +28,12 @@ public class OutilDAO {
         return em.createNativeQuery("select * from outil", MyOutilEntity.class).getResultList();
     }
 
-    public MyOutilEntity getById(int id){
+    public MyOutilEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyOutilEntity.class, id);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 

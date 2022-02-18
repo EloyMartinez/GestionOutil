@@ -28,12 +28,12 @@ public class LocationDAO {
         return em.createNativeQuery("select * from location", MyLocationEntity.class).getResultList();
     }
 
-    public MyLocationEntity getById(int id){
+    public MyLocationEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyLocationEntity.class, id);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 
