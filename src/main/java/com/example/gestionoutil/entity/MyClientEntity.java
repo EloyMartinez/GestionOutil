@@ -4,12 +4,15 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "client", schema = "gestionoutils", catalog = "")
 public class MyClientEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idcli", nullable = false, unique = true)
     public Long idcli;
@@ -37,6 +40,17 @@ public class MyClientEntity {
     @Basic
     @Column(name = "ida")
     private Long ida;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
+    @Basic
+    @Column(name = "enabled")
+    private boolean enabled;
+
 
     public MyClientEntity() {
     }
@@ -124,6 +138,22 @@ public class MyClientEntity {
         this.ida = ida;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -145,9 +175,9 @@ public class MyClientEntity {
         return true;
     }
 
-    /*@Override
+    @Override
     public int hashCode() {
-        int result = (int) idcli;
+        Long result = idcli;
         result = 31 * result + (nomcli != null ? nomcli.hashCode() : 0);
         result = 31 * result + (prenomcli != null ? prenomcli.hashCode() : 0);
         result = 31 * result + (datenaissancecli != null ? datenaissancecli.hashCode() : 0);
@@ -156,6 +186,6 @@ public class MyClientEntity {
         result = 31 * result + (telephonecli != null ? telephonecli.hashCode() : 0);
         result = 31 * result + (mdpcli != null ? mdpcli.hashCode() : 0);
         result = 31 * result + (ida != null ? ida.hashCode() : 0);
-        return result;
-    }*/
+        return Math.toIntExact(result);
+    }
 }

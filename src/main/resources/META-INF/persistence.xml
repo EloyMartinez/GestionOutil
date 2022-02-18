@@ -20,6 +20,7 @@
         <class>com.example.gestionoutil.entity.MyOutilEntity</class>
         <class>com.example.gestionoutil.entity.MyPanierEntity</class>
         <class>com.example.gestionoutil.entity.MyParticulierEntity</class>
+        <class>com.example.gestionoutil.entity.Role</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://adade.mysql.database.azure.com:3306/gestionoutils?useSSL=true"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>

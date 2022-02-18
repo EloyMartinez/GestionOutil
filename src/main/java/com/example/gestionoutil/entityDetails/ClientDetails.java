@@ -1,12 +1,12 @@
 package com.example.gestionoutil.entityDetails;
 
 import com.example.gestionoutil.entity.MyClientEntity;
+import com.example.gestionoutil.entity.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 
 public class ClientDetails implements UserDetails {
     private MyClientEntity client;
@@ -17,8 +17,12 @@ public class ClientDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("client");
-        return Arrays.asList(authority);
+        Set<Role> roles = client.getRoles();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        for (Role role : roles){
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return authorities;
     }
 
     @Override
