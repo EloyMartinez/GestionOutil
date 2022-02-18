@@ -10,6 +10,9 @@ public class MyElectriqueEntity {
     @Column(name = "idelec")
     private Long idelec;
     @Basic
+    @Column(name = "nomOutil")
+    private String nomOutil;
+    @Basic
     @Column(name = "puissance")
     private Double puissance;
     @Basic
@@ -17,6 +20,14 @@ public class MyElectriqueEntity {
     private Long idoutil;
 
     public MyElectriqueEntity() {
+    }
+
+    public void setNomOutil(String nomOutil) {
+        this.nomOutil = nomOutil;
+    }
+
+    public String getNomOutil() {
+        return nomOutil;
     }
 
     public Long getIdelec() {
