@@ -45,12 +45,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         };
         http.authorizeRequests()
                 .antMatchers("/register","/").permitAll()
+                .antMatchers("/delete/**").hasAuthority("ADMIN")
+                .antMatchers("/edit/**").hasAuthority("ADMIN")
                 .antMatchers(permitted).permitAll()
 //                .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/users")
                 .and()
-                .logout().permitAll();
+                .logout().permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/403")
+        ;
     }
 }
