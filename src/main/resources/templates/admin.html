@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Admin</title>
 
@@ -11,17 +10,6 @@
           crossorigin="anonymous" />
 </head>
 <body>
-<div align="center">
-    <div sec:authorize="isAuthenticated()">
-        Bonjour <span sec:authentication=>Nom</span>
-        &nbsp;
-        <span sec:athentication="principal.authorities">Role</span>
-
-        <form th:action="@{/logout}" method="post">
-            <input type= "submit" value="Logout"/>
-        </form>
-    </div>
-</div>
 <h3 th:inline="text">Bienvenue admin 1</h3>
 
 <div class="container">
@@ -37,12 +25,6 @@
             <th>Client ID</th>
             <th>Nom</th>
             <th>Prenom</th>
-            <th>Adresse</th>
-            <th>Date de naissance</th>
-            <th>Téléphone</th>
-            <th>Courriel</th>
-
-            <th sec:authorize="hasAnyAuthority('ADMIN')"> Actions </th>
         </tr>
         </thead>
         <tbody>
@@ -50,14 +32,6 @@
             <td th:text="${client.getIdcli()}" />
             <td th:text="${client.getNomcli()}" />
             <td th:text="${client.getPrenomcli()}" />
-            <td th:text="${client.getAdressecli()}" />
-            <td th:text="${client.getTelephonecli()}" />
-            <td th:text="${client.getCourrielcli()}" />
-            <td sec:authorize="hasAnyAuthority('ADMIN')">
-                <a th:href="@{'/edit/' + ${client.getIdcli()}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete/' + ${client.getIdcli()}}">Delete</a>
-            </td>
         </tr>
         </tbody>
 
