@@ -12,13 +12,13 @@ public class GestionOutilApplication {
     public static void main(String[] args) {
         SpringApplication.run(GestionOutilApplication.class, args);
 
-        ClientDAO clientDAO = new ClientDAO();
+        /*ClientDAO clientDAO = new ClientDAO();
         MyClientEntity client = new MyClientEntity();
         client.setNomcli("nom");
         client.setPrenomcli("prenom");
         client.setAdmin(false);
         client.setCourrielcli("courriel");
 
-        clientDAO.save(client);
+        clientDAO.save(client);*/
     }
 }

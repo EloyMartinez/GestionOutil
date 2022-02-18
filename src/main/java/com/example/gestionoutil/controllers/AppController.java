@@ -25,6 +25,8 @@ public class AppController {
 
     private ClientDAO clientDAO = new ClientDAO();
 
+    public static MyClientEntity selectedUser;
+
     @GetMapping("")
     public String viewHomePage(){
         return "login";
@@ -76,11 +78,21 @@ public class AppController {
 
     @RequestMapping("/edit/{id}")
     public ModelAndView showEditClientForm(@PathVariable(name="id") Long id) {
-        ModelAndView mav = new ModelAndView("edit_product");
+        ModelAndView mav = new ModelAndView("editUser");
 
         MyClientEntity client = clientDAO.getById(id);
+        selectedUser = client;
         mav.addObject("client", client);
         return mav;
+    }
+
+    @PostMapping("/process_edit")
+    public String processEdit(MyClientEntity client){
+        //client = client avec nouvelles info, mais incompletes
+        //selecteduser = client avec anciennes info
+        client.edit(selectedUser); //on met les infos manquantes dans user
+        clientDAO.save(client);
+        return "redirect:/admin";
     }
 
     @RequestMapping("/delete/{id}")
