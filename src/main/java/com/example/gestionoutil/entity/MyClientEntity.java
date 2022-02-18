@@ -128,6 +128,19 @@ public class MyClientEntity {
         isadmin = admin;
     }
 
+    public void edit(MyClientEntity oldUser){
+        if (this.idcli == null) this.idcli = oldUser.idcli;
+        if (this.courrielcli == null) this.courrielcli = oldUser.courrielcli;
+        if (this.mdpcli == null) this.mdpcli = oldUser.mdpcli;
+        if (this.prenomcli == null) this.prenomcli = oldUser.prenomcli;
+        if (this.nomcli == null) this.nomcli = oldUser.nomcli;
+        if (this.adressecli == null) this.adressecli = oldUser.adressecli;
+        if (this.telephonecli == null) this.telephonecli = oldUser.telephonecli;
+        if (this.datenaissancecli == null) this.datenaissancecli = oldUser.datenaissancecli;
+        if (this.adressecli == null) this.adressecli = oldUser.adressecli;
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
