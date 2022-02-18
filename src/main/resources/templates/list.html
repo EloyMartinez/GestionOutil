@@ -6,7 +6,7 @@
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-          crossorigin="anonymous" />
+          crossorigin="anonymous"/>
 </head>
 
 <body>
@@ -28,8 +28,8 @@
         </thead>
         <tbody>
         <tr th:each="ElectricTool: ${electric}">
-            <td th:text="${ElectricTool.getIdelec()}" />
-            <td th:text="${ElectricTool.getIdoutil()}" />
+            <td th:text="${ElectricTool.getIdelec()}"></td>
+            <td th:text="${ElectricTool.getIdoutil()}"></td>
         </tr>
         </tbody>
 
