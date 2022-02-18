@@ -2,36 +2,41 @@
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>List Users</title>
+    <title>Admin</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
 </head>
 <body>
 <h3 th:inline="text">Bienvenue admin 1</h3>
 
-<div>
-    <h1>List of Users</h1>
-</div>
-<div class="container text-center">
+<div class="container">
 
-    <div>
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
-            <tr>
-                <th>Client ID</th>
-                <th>E-mail</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="client: ${listClients}">
-                <td th:text="${client.getIdcli()}" />
-                <td th:text="${client.getCourrielcli()}" />
-                <td th:text="${client.getPrenomcli()}" />
-                <td th:text="${client.getNomcli()}" />
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <h3>List User</h3>
+
+    <hr/>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+        <tr>
+            <th>Client ID</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client: ${listClients}">
+            <td th:text="${client.getIdcli()}" />
+            <td th:text="${client.getNomcli()}" />
+            <td th:text="${client.getPrenomcli()}" />
+        </tr>
+        </tbody>
+
+    </table>
 </div>
+
 </body>
 </html>
