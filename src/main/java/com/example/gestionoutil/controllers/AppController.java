@@ -2,7 +2,11 @@ package com.example.gestionoutil.controllers;
 
 import com.example.gestionoutil.dao.ClientDAO;
 import com.example.gestionoutil.entity.MyClientEntity;
+<<<<<<< HEAD
 import com.example.gestionoutil.repositories.ElectricRepository;
+=======
+import com.example.gestionoutil.repositories.ClientRepository;
+>>>>>>> 845053b833d9ed91d24b78375d63587a82ff77d2
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -10,12 +14,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class AppController {
+
+    @Autowired
+    private ClientRepository clientRepository;
 
     @GetMapping("")
     public String viewHomePage(){
         return "login";
+    }
+
+    @GetMapping("/admin")
+    public String admin(Model model) {
+        List<MyClientEntity> listClient = clientRepository.findAll();
+        model.addAttribute("listClients", listClient);
+        return "admin";
     }
 
     @GetMapping("/login")
@@ -29,16 +45,12 @@ public class AppController {
         return "register";
     }
 
+
     @GetMapping("/users")
     public String users() {
         return "users";
     }
 
-
-    @GetMapping("/admin")
-    public String admin() {
-        return "admin";
-    }
 
     @PostMapping("/process_register")
     public String processRegister(MyClientEntity client) {
@@ -46,7 +58,6 @@ public class AppController {
         client.setMdpcli(passwordEncoder.encode(client.getMdpcli()));
         ClientDAO clientDAO= new ClientDAO();
         clientDAO.save(client);
-
         return "register_success";
     }
 

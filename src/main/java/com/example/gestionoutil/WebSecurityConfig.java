@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         String[] permitted = new String[]{
-                "/", "/register","/register","/about","/images/**",
+                "/","/admin", "/register","/register","/about","/images/**",
                 "/css/**","/fonts/**","/vendor/**","/js/**","/images.icons/**"
         };
         http.authorizeRequests()
