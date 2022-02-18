@@ -20,13 +20,16 @@ public class AppController {
 
     @Autowired
     private ClientRepository clientRepository;
+    @Autowired
+    private ElectricRepository eRepo;
 
     @Autowired
     private AdminRepository adminRepository;
 
     @GetMapping("")
-    public String viewHomePage(){
-        return "login";
+    public String viewHomePage(Model model) {
+        model.addAttribute("electric", eRepo.findAll());
+        return "index";
     }
 
     @GetMapping("/admin")
@@ -58,19 +61,15 @@ public class AppController {
     public String processRegister(MyClientEntity client) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         client.setMdpcli(passwordEncoder.encode(client.getMdpcli()));
-        ClientDAO clientDAO= new ClientDAO();
+        ClientDAO clientDAO = new ClientDAO();
         clientDAO.save(client);
         return "register_success";
     }
-
-    @Autowired
-    private ElectricRepository eRepo;
 
     @GetMapping("/list")
     public String showAll(Model model) {
         model.addAttribute("electric", eRepo.findAll());
         return "list";
     }
-
 
 }
