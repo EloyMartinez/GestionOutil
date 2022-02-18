@@ -36,7 +36,7 @@ public class AppController {
     public String admin(Model model) {
         List<MyClientEntity> listClient = clientRepository.findAll();
         model.addAttribute("listClients", listClient);
-        return "admin";
+        return "admin_user";
     }
 
     @GetMapping("/login")
