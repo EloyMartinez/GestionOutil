@@ -1,10 +1,11 @@
 package com.example.gestionoutil.controllers;
 
 import com.example.gestionoutil.dao.ClientDAO;
-import com.example.gestionoutil.entity.MyAdminEntity;
 import com.example.gestionoutil.entity.MyClientEntity;
 import com.example.gestionoutil.repositories.AdminRepository;
+import com.example.gestionoutil.repositories.ElectricRepository;
 import com.example.gestionoutil.repositories.ClientRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -60,6 +61,15 @@ public class AppController {
         ClientDAO clientDAO= new ClientDAO();
         clientDAO.save(client);
         return "register_success";
+    }
+
+    @Autowired
+    private ElectricRepository eRepo;
+
+    @GetMapping("/list")
+    public String showAll(Model model) {
+        model.addAttribute("electric", eRepo.findAll());
+        return "list";
     }
 
 
