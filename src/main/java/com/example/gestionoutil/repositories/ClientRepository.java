@@ -10,5 +10,4 @@ public interface ClientRepository extends JpaRepository<MyClientEntity, Long> {
     @Query("SELECT c FROM MyClientEntity c WHERE c.courrielcli = ?1")
     MyClientEntity getClientByEmail(@Param("courriel") String courriel);
 
-
 }
