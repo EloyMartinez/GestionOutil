@@ -1,7 +1,9 @@
 package com.example.gestionoutil.controllers;
 
 import com.example.gestionoutil.dao.ClientDAO;
+import com.example.gestionoutil.entity.MyAdminEntity;
 import com.example.gestionoutil.entity.MyClientEntity;
+import com.example.gestionoutil.repositories.AdminRepository;
 import com.example.gestionoutil.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +19,9 @@ public class AppController {
 
     @Autowired
     private ClientRepository clientRepository;
+
+    @Autowired
+    private AdminRepository adminRepository;
 
     @GetMapping("")
     public String viewHomePage(){
