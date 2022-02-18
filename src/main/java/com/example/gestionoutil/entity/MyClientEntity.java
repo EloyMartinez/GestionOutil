@@ -38,18 +38,8 @@ public class MyClientEntity {
     @Column(name = "mdpcli")
     private String mdpcli;
     @Basic
-    @Column(name = "ida")
-    private Long ida;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles = new HashSet<>();
-    @Basic
-    @Column(name = "enabled")
-    private boolean enabled;
+    @Column(name = "isadmin")
+    private boolean isadmin;
 
 
     public MyClientEntity() {
@@ -130,28 +120,12 @@ public class MyClientEntity {
         this.mdpcli = mdpcli;
     }
 
-    public Long getIda() {
-        return ida;
+    public boolean getIsAdmin() {
+        return isadmin;
     }
 
-    public void setIda(Long ida) {
-        this.ida = ida;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setAdmin(boolean admin) {
+        isadmin = admin;
     }
 
     @Override
@@ -170,7 +144,7 @@ public class MyClientEntity {
         if (courrielcli != null ? !courrielcli.equals(that.courrielcli) : that.courrielcli != null) return false;
         if (telephonecli != null ? !telephonecli.equals(that.telephonecli) : that.telephonecli != null) return false;
         if (mdpcli != null ? !mdpcli.equals(that.mdpcli) : that.mdpcli != null) return false;
-        if (ida != null ? !ida.equals(that.ida) : that.ida != null) return false;
+        if (isadmin != that.isadmin) return false;
 
         return true;
     }
@@ -185,7 +159,7 @@ public class MyClientEntity {
         result = 31 * result + (courrielcli != null ? courrielcli.hashCode() : 0);
         result = 31 * result + (telephonecli != null ? telephonecli.hashCode() : 0);
         result = 31 * result + (mdpcli != null ? mdpcli.hashCode() : 0);
-        result = 31 * result + (ida != null ? ida.hashCode() : 0);
+        result = 31 * result + (isadmin ? 1:0);
         return Math.toIntExact(result);
     }
 }

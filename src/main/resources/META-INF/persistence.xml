@@ -5,12 +5,9 @@
              version="2.2">
     <persistence-unit name="GestionOutil">
 
-        <class>com.example.gestionoutil.entity.MyActeurEntity</class>
         <class>com.example.gestionoutil.entity.MyAchatEntity</class>
-        <class>com.example.gestionoutil.entity.MyAdminEntity</class>
         <class>com.example.gestionoutil.entity.MyClientEntity</class>
         <class>com.example.gestionoutil.entity.MyCommandeEntity</class>
-        <class>com.example.gestionoutil.entity.MyConseilleClientEntity</class>
         <class>com.example.gestionoutil.entity.MyElectriqueEntity</class>
         <class>com.example.gestionoutil.entity.MyEntrepriseEntity</class>
         <class>com.example.gestionoutil.entity.MyHydrauliqueEntity</class>
@@ -20,7 +17,6 @@
         <class>com.example.gestionoutil.entity.MyOutilEntity</class>
         <class>com.example.gestionoutil.entity.MyPanierEntity</class>
         <class>com.example.gestionoutil.entity.MyParticulierEntity</class>
-        <class>com.example.gestionoutil.entity.Role</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://adade.mysql.database.azure.com:3306/gestionoutils?useSSL=true"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
