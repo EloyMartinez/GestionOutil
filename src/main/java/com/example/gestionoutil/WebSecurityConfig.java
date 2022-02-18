@@ -44,18 +44,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/css/**","/fonts/**","/vendor/**","/js/**","/images.icons/**"
         };
         http.authorizeRequests()
-                .antMatchers("/register","/").permitAll()
-                .antMatchers("/delete/**").hasAuthority("ADMIN")
-                .antMatchers("/edit/**").hasAuthority("ADMIN")
                 .antMatchers(permitted).permitAll()
 //                .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/users")
                 .and()
-                .logout().permitAll()
-                .and()
-                .exceptionHandling().accessDeniedPage("/403")
-        ;
+                .logout().permitAll();
     }
 }
