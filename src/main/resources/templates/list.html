@@ -16,24 +16,44 @@
     <h3>List Employees</h3>
 
     <hr/>
-
     <table class="table table-bordered table-striped">
 
         <thead>
         <tr>
             <th>Name</th>
-            <th>Email</th>
-            <th>Department</th>
+            <th>idElec</th>
+            <th>idOutil</th>
+            <th>description</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="ElectricTool: ${electric}">
+        <tr th:each="ElectricTool: ${electric}"
+            th:some-field="${ElectricTool.getNomOutil()}" onclick="rowClicked(this.getAttribute('some-field'))">
+
+            <td th:text="${ElectricTool.getNomOutil()}" />
             <td th:text="${ElectricTool.getIdelec()}" />
             <td th:text="${ElectricTool.getIdoutil()}" />
+            <td>
+
+            <form th:action="@{/description}"  method="post" th:object="${ElectricTool}">
+                <input style="display: none" type="hidden" th:value="*{nomOutil}" name="nomOutil" />
+                <input style="display: none" type="hidden" th:value="*{idelec}" name="idelec" />
+                <input style="display: none" type="hidden" th:value="*{idoutil}" name="idoutil" />
+                <input type="submit" value="Pokaż" />
+
+            </form>
+            </td>
         </tr>
         </tbody>
+        <script>
+            function rowClicked(value) {
+                // location.href = "/myurl?param=" + value;
+                console.log(value);
+            }
+        </script>
 
     </table>
+
 </div>
 
 

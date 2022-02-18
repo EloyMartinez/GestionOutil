@@ -2,17 +2,16 @@ package com.example.gestionoutil.controllers;
 
 import com.example.gestionoutil.dao.ClientDAO;
 import com.example.gestionoutil.entity.MyClientEntity;
-<<<<<<< HEAD
+import com.example.gestionoutil.entity.MyElectriqueEntity;
 import com.example.gestionoutil.repositories.ElectricRepository;
-=======
 import com.example.gestionoutil.repositories.ClientRepository;
->>>>>>> 845053b833d9ed91d24b78375d63587a82ff77d2
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -67,6 +66,13 @@ public class AppController {
     @GetMapping("/list")
     public String showAll(Model model) {
         model.addAttribute("electric", eRepo.findAll());
+        return "list";
+    }
+
+    @RequestMapping("/description")
+    public String description(Model model, MyElectriqueEntity electric) {
+        System.out.print(electric.getIdelec());
+
         return "list";
     }
 
