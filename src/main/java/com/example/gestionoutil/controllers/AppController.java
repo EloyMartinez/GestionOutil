@@ -23,7 +23,7 @@ public class AppController {
     @Autowired
     private ClientRepository clientRepository;
 
-    private ClientDAO clientDAO;
+    private ClientDAO clientDAO = new ClientDAO();
 
     @GetMapping("")
     public String viewHomePage(){
@@ -84,9 +84,9 @@ public class AppController {
     }
 
     @RequestMapping("/delete/{id}")
-    public ModelAndView deleteClient(@PathVariable(name="id") Long id) {
+    public String deleteClient(@PathVariable(name="id") Long id) {
         clientDAO.delete(id);
-        return null;
+        return "redirect:/admin";
     }
 
     @GetMapping("/403")
