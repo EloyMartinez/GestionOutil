@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">>
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>Admin Product</title>
 
@@ -22,7 +22,10 @@
         </form>
     </div>
 </div>
-<h3 th:inline="text"> Bienvenue admin 1</h3>
+<br>
+<center>
+    <h3 th:inline="text"> Bienvenue Admin</h3>
+</center>
 
 <div class="container">
 
@@ -40,7 +43,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="electrique: ${listProduct}">
+        <tr th:each="electrique: ${erepo}">
             <td th:text="${electrique.nomoutil}" />
             <td th:text="${electrique.getIdelec()}" />
             <td th:text="${electrique.puissance}" />
@@ -51,6 +54,22 @@
                 <a th:href="@{'/editProduct/' + ${electrique.getIdelec()}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a th:href="@{'/deleteProduct/' + ${electrique.getIdelec()}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+
+        <tbody>
+        <tr th:each="hydrolique: ${hrepo}">
+            <td th:text="${hydrolique.nomoutil}" />
+            <td th:text="${hydrolique.idhyd}" />
+            <td th:text="${hydrolique.pression}" />
+            <td th:text="${hydrolique.description}" />
+            <td th:text="${hydrolique.prix}" />
+
+            <td sec:authorize="hasAnyAuthority('ADMIN')">
+                <a th:href="@{'/editProduct/' + ${hydrolique.getIdhyd()}}">Edit (Marche pas)</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/deleteProduct/' + ${hydrolique.getIdhyd()}}">Delete (Marche pas)</a>
             </td>
         </tr>
         </tbody>

@@ -23,18 +23,25 @@ import java.util.List;
 @Controller
 public class AppController {
 
+
     @Autowired
     private ClientRepository clientRepository;
 
     @Autowired
-    private ElectricRepository electriqueRepository;
+    private ElectricRepository eRepo;
+
+    @Autowired
+    private HydraulicRepository hRepo;
 
     private ClientDAO clientDAO = new ClientDAO();
     private ElectriqueDAO electiqueDAO = new ElectriqueDAO();
 
+
     public static MyClientEntity selectedUser;
     public static MyElectriqueEntity selectedElectrique;
 
+
+    //GET MAPPING
     @GetMapping("")
     public String viewHomePage(){
         return "login";
@@ -49,8 +56,8 @@ public class AppController {
 
     @GetMapping("/admin_product")
     public String admin_product(Model model) {
-        List<MyElectriqueEntity> listProduct = electriqueRepository.findAll();
-        model.addAttribute("listProduct", listProduct);
+        model.addAttribute("hrepo", hRepo.findAll());
+        model.addAttribute("erepo", eRepo.findAll());
         return "admin_product";
     }
 
@@ -65,13 +72,33 @@ public class AppController {
         return "register";
     }
 
-
     @GetMapping("/users")
     public String users() {
         return "users";
     }
 
+    @GetMapping("/list")
+    public String list(Model model) {
+        model.addAttribute("electric", eRepo.findAll());
+        model.addAttribute("hidra", hRepo.findAll());
+        return "list";
+    }
 
+    @GetMapping("/403")
+    public String error403()
+    {
+        return "403";
+    }
+
+    @GetMapping("/addUser")
+    public String addUser(Model model){
+        model.addAttribute("client", new MyClientEntity());
+        return "addUser";
+    }
+
+
+
+    //POST MAPPING
     @PostMapping("/process_register")
     public String processRegister(MyClientEntity client) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -82,23 +109,43 @@ public class AppController {
         return "register_success";
     }
 
-    @Autowired
-    private ElectricRepository eRepo;
-
-    @Autowired
-    private HydraulicRepository hRepo;
-
-    @GetMapping("/list")
-    public String list(Model model) {
-        model.addAttribute("electric", eRepo.findAll());
-        model.addAttribute("hidra", hRepo.findAll());
-        return "list";
+    //POST MAPPING
+    @PostMapping("/add_success")
+    public String addSucces(MyClientEntity client) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        client.setMdpcli(passwordEncoder.encode(client.getMdpcli()));
+        client.setAdmin(false);
+        clientDAO = new ClientDAO();
+        clientDAO.save(client);
+        return "redirect:/admin_user";
     }
 
+
+    @PostMapping("/process_edit_user")
+    public String processEditUser(MyClientEntity client){
+        //client = client avec nouvelles info, mais incompletes
+        //selecteduser = client avec anciennes info
+        client.edit(selectedUser); //on met les infos manquantes dans user
+        clientDAO.save(client);
+        return "redirect:/admin_user";
+    }
+
+    @PostMapping("/process_edit_product")
+    public String processEditProduct(MyElectriqueEntity electrique){
+        //client = client avec nouvelles info, mais incompletes
+        //selecteduser = client avec anciennes info
+        //on met les infos manquantes dans user
+        electrique.edit(selectedElectrique);
+        electiqueDAO.save(electrique);
+        return "redirect:/admin_product";
+    }
+
+
+
+    //REQUEST MAPPING
     @RequestMapping("/descriptionEl")
     public String descriptionEl(Model model, MyElectriqueEntity ent) {
         model.addAttribute("elec",ent);
-
         return "descriptionEl";
     }
 
@@ -118,24 +165,6 @@ public class AppController {
         return mav;
     }
 
-    @PostMapping("/process_edit_user")
-    public String processEditUser(MyClientEntity client){
-        //client = client avec nouvelles info, mais incompletes
-        //selecteduser = client avec anciennes info
-        client.edit(selectedUser); //on met les infos manquantes dans user
-        clientDAO.save(client);
-        return "redirect:/admin_user";
-    }
-
-    @PostMapping("/process_edit_product")
-    public String processEditProduct(MyElectriqueEntity electrique){
-        //client = client avec nouvelles info, mais incompletes
-        //selecteduser = client avec anciennes info
-         //on met les infos manquantes dans user
-        electrique.edit(selectedElectrique);
-        electiqueDAO.save(electrique);
-        return "redirect:/admin_product";
-    }
 
     @RequestMapping("/editProduct/{id}")
     public ModelAndView showEditProductForm(@PathVariable(name="id") Long id) {
@@ -158,13 +187,6 @@ public class AppController {
         electiqueDAO.delete(id);
         return "redirect:/admin";
     }
-
-    @GetMapping("/403")
-    public String error403()
-    {
-        return "403";
-    }
-
 
 
 }

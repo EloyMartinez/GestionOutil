@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">>
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>Admin user</title>
 
@@ -22,12 +22,14 @@
         </form>
     </div>
 </div>
-<h3 th:inline="text">Bienvenue admin 1</h3>
+<br>
+<center>
+    <h3 th:inline="text">Bienvenue Admin</h3>
+</center>
 
 <div class="container">
 
     <h3>List User</h3>
-    <hr/>
     <table class="table table-bordered table-striped">
 
         <thead>
@@ -56,14 +58,20 @@
             <td th:text="${client.getIsAdmin() ? 'ADMIN' : 'CLIENT'}" />
 
             <td sec:authorize="hasAnyAuthority('ADMIN')">
-                <a th:href="@{'/editUser/' + ${client.getIdcli()}}">Edit</a>
+                <a th:href="@{'/editUser' + ${client.getIdcli()}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/deleteUser/' + ${client.getIdcli()}}">Delete</a>
+                <a th:href="@{'/deleteUser' + ${client.getIdcli()}}">Delete</a>
             </td>
         </tr>
         </tbody>
 
     </table>
+
+    <center>
+        <form th:action="@{/addUser}" method="get">
+            <input type= "submit" value="addUser"/>
+        </form>
+    </center>
 </div>
 
 </body>
