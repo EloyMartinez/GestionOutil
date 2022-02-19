@@ -10,7 +10,7 @@ import java.sql.Date;
 public class GestionOutilApplication {
     public static void main(String[] args) {
         SpringApplication.run(GestionOutilApplication.class, args);
-<<<<<<< HEAD
+
 
         /*ClientDAO clientDAO = new ClientDAO();
         MyClientEntity client = new MyClientEntity();
@@ -35,7 +35,5 @@ public class GestionOutilApplication {
 
         clientDAO.save(client);
         clientDAO.save(client1);*/
-=======
->>>>>>> cbfae1732be4db123c0f81e965c9c079a7d8ce73
     }
 }
