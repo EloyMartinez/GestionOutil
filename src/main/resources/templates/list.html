@@ -22,25 +22,33 @@
         <thead>
         <tr>
             <th>Name</th>
-            <th>idElec</th>
-            <th>idOutil</th>
+            <th>id</th>
+            <th>Puissance</th>
             <th>description</th>
+            <th>prix</th>
+
         </tr>
         </thead>
         <tbody>
         <tr th:each="ElectricTool: ${electric}"
-            th:some-field="${ElectricTool.getNomOutil()}" onclick="rowClicked(this.getAttribute('some-field'))">
+            th:some-field="${ElectricTool.nomoutil}" onclick="rowClicked(this.getAttribute('some-field'))">
 
-            <td th:text="${ElectricTool.getNomOutil()}" />
-            <td th:text="${ElectricTool.getIdelec()}" />
-            <td th:text="${ElectricTool.getIdoutil()}" />
+            <td th:text="${ElectricTool.nomoutil}" />
+            <td th:text="${ElectricTool.getIdelec()} + ${ElectricTool.getIdoutil()}" />
+            <td th:text="${ElectricTool.puissance}" />
+            <td th:text="${ElectricTool.description}" />
+            <td th:text="${ElectricTool.prix}" />
+
+
             <td>
-
                 <form th:action="@{/description}"  method="post" th:object="${ElectricTool}">
-                    <input style="display: none" type="hidden" th:value="*{nomOutil}" name="nomOutil" />
+                    <input style="display: none" type="hidden" th:value="*{nomoutil}" name="nomoutil" />
                     <input style="display: none" type="hidden" th:value="*{idelec}" name="idelec" />
                     <input style="display: none" type="hidden" th:value="*{idoutil}" name="idoutil" />
-                    <input type="submit" value="Pokaż" />
+                    <input style="display: none" type="hidden" th:value="*{puissance}" name="puissance" />
+                    <input style="display: none" type="hidden" th:value="*{description}" name="description" />
+                    <input style="display: none" type="hidden" th:value="*{prix}" name="prix" />
+                    <input type="submit" value="Description" />
 
                 </form>
             </td>

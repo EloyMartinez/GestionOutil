@@ -10,24 +10,46 @@ public class MyElectriqueEntity {
     @Column(name = "idelec")
     private Long idelec;
     @Basic
-    @Column(name = "nomOutil")
-    private String nomOutil;
+    @Column(name = "nomoutil")
+    private String nomoutil;
     @Basic
     @Column(name = "puissance")
-    private Double puissance;
+    private Long puissance;
     @Basic
     @Column(name = "idoutil")
     private Long idoutil;
+    @Basic
+    @Column(name = "description")
+    private String description;
+    @Basic
+    @Column(name = "prix")
+    private Double prix;
 
     public MyElectriqueEntity() {
     }
 
-    public void setNomOutil(String nomOutil) {
-        this.nomOutil = nomOutil;
+    public String getDescription() {
+        return description;
     }
 
-    public String getNomOutil() {
-        return nomOutil;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(Double prix) {
+        this.prix = prix;
+    }
+
+    public String getNomoutil() {
+        return nomoutil;
+    }
+
+    public void setNomoutil(String nomoutil) {
+        this.nomoutil = nomoutil;
     }
 
     public Long getIdelec() {
@@ -38,11 +60,11 @@ public class MyElectriqueEntity {
         this.idelec = idelec;
     }
 
-    public Double getPuissance() {
+    public long getPuissance() {
         return puissance;
     }
 
-    public void setPuissance(Double puissance) {
+    public void setPuissance(Long puissance) {
         this.puissance = puissance;
     }
 
