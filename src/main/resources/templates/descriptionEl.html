@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <title></title>
+    <meta charset="UTF-8"/>
+    <link th:href="@{/css/main.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.css}" rel="stylesheet">
+    <title>Description produit</title>
 </head>
 <body>
-<h1>
-    <p th:text="${elec.nomoutil}" />
-</h1>
-<p th:text="${elec.idoutil}" />
-<p th:text="${elec.idelec}" />
-<p th:text="${elec.description}" />
-<p th:text="${elec.puissance}" />
-<p th:text="${elec.prix}" />
+<table>
+    <thead>
+    <tr>
+        <th></th> <!--Image du produit-->
+        <th>Produit</th>
+        <th>Prix</th>
+        <th>Puissance</th>
+        <th id="full-description">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><img alt="Mjolnir" th:src="@{/images/Mjolnir.png}"></td>
+        <!--TODO: image à rendre dynamique avec BDD-->
+        <td th:text="${elec.getNomoutil()}"></td>
+        <td th:text="${elec.getPrix()}"></td>
+        <td th:text="${elec.getPuissance()}"></td>
+        <td th:text="${elec.getDescription()}"></td>
+    </tr>
+    </tbody>
+</table>
+<button class="" onclick="window.location.href='/index'">Retour à la page principale</button>
 </body>
 </html>

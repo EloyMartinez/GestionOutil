@@ -105,13 +105,14 @@
             <!-- Sidebar end=============================================== -->
             <!-- Products list ============================================ -->
             <div class="span2">
-                <table>
+                <table class="overview-description">
                     <thead>
                     <tr>
                         <th id="product-pic-col">Produit</th>
                         <th id="product-name-col"></th>
                         <th id="product-price">Prix</th>
                         <th>Description</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -121,6 +122,18 @@
                         <td th:text="${ElectricTool.getNomoutil()}"></td>
                         <td th:text="${ElectricTool.getPrix()}"></td>
                         <td th:text="${ElectricTool.getDescription()}"></td>
+                        <td>
+                            <form th:action="@{/descriptionEl}" method="post" th:object="${ElectricTool}">
+                                <input style="display: none" type="hidden" th:value="*{nomoutil}" name="nomoutil"/>
+                                <input style="display: none" type="hidden" th:value="*{idelec}" name="idelec"/>
+                                <input style="display: none" type="hidden" th:value="*{idoutil}" name="idoutil"/>
+                                <input style="display: none" type="hidden" th:value="*{puissance}" name="puissance"/>
+                                <input style="display: none" type="hidden" th:value="*{description}"
+                                       name="description"/>
+                                <input style="display: none" type="hidden" th:value="*{prix}" name="prix"/>
+                                <input type="submit" value="Description"/>
+                            </form>
+                        </td>
                     </tr>
                     <tr th:each="HydraulicTool: ${hydraulic}">
                         <td><img alt="Mjolnir" th:src="@{/images/Mjolnir.png}"></td>
@@ -128,6 +141,18 @@
                         <td th:text="${HydraulicTool.getNomoutil()}"></td>
                         <td th:text="${HydraulicTool.getPrix()}"></td>
                         <td th:text="${HydraulicTool.getDescription()}"></td>
+                        <td>
+                            <form th:action="@{/descriptionHi}" method="post" th:object="${HydraulicTool}">
+                                <input style="display: none" type="hidden" th:value="*{nomoutil}" name="nomoutil"/>
+                                <input style="display: none" type="hidden" th:value="*{idhyd}" name="idhyd"/>
+                                <input style="display: none" type="hidden" th:value="*{idoutil}" name="idoutil"/>
+                                <input style="display: none" type="hidden" th:value="*{pression}" name="pression"/>
+                                <input style="display: none" type="hidden" th:value="*{description}"
+                                       name="description"/>
+                                <input style="display: none" type="hidden" th:value="*{prix}" name="prix"/>
+                                <input type="submit" value="Description"/>
+                            </form>
+                        </td>
                     </tr>
                     <tr th:each="ManualTool: ${manual}">
                         <td><img alt="Mjolnir" th:src="@{/images/Mjolnir.png}"></td>
@@ -146,32 +171,6 @@
 <!-- Footer ================================================================== -->
 <div id="footerSection"> <!--TODO: À modifier-->
     <div class="container">
-        <div class="row">
-            <div class="span3">
-                <h5>ACCOUNT</h5>
-                <a th:href="@{/login.html}">YOUR ACCOUNT</a>
-                <a th:href="@{/login.html}">PERSONAL INFORMATION</a>
-                <a th:href="@{/login.html}">ADDRESSES</a>
-                <a th:href="@{/login.html}">DISCOUNT</a>
-                <a th:href="@{/login.html}">ORDER HISTORY</a>
-            </div>
-            <div class="span3">
-                <h5>INFORMATION</h5>
-                <a th:href="@{/contact.html}">CONTACT</a>
-                <a th:href="@{/register.html}">REGISTRATION</a>
-                <a th:href="@{/legal_notice.html}">LEGAL NOTICE</a>
-                <a th:href="@{/tac.html}">TERMS AND CONDITIONS</a>
-                <a th:href="@{/faq.html}">FAQ</a>
-            </div>
-            <div class="span3">
-                <h5>OUR OFFERS</h5>
-                <a th:href="@{/#}">NEW PRODUCTS</a>
-                <a th:href="@{/#}">TOP SELLERS</a>
-                <a th:href="@{/#}">SPECIAL OFFERS</a>
-                <a th:href="@{/#}">MANUFACTURERS</a>
-                <a th:href="@{/#}">SUPPLIERS</a>
-            </div>
-        </div>
         <p class="pull-right">&reg; no name</p>
     </div><!-- Container End -->
 </div>

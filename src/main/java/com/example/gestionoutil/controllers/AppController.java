@@ -72,11 +72,6 @@ public class AppController {
         return "register";
     }
 
-    @GetMapping("/users")
-    public String users() {
-        return "users";
-    }
-
     @GetMapping("/list")
     public String list(Model model) {
         model.addAttribute("electric", eRepo.findAll());
