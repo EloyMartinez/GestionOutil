@@ -10,11 +10,20 @@ public class MyHydrauliqueEntity {
     @Column(name = "idhyd")
     private Long idhyd;
     @Basic
+    @Column(name = "nomoutil")
+    private String nomoutil;
+    @Basic
     @Column(name = "pression")
-    private Double pression;
+    private Long pression;
     @Basic
     @Column(name = "idoutil")
     private Long idoutil;
+    @Basic
+    @Column(name = "description")
+    private String description;
+    @Basic
+    @Column(name = "prix")
+    private Double prix;
 
     public MyHydrauliqueEntity() {
     }
@@ -27,12 +36,36 @@ public class MyHydrauliqueEntity {
         this.idhyd = idhyd;
     }
 
-    public Double getPression() {
+    public String getNomoutil() {
+        return nomoutil;
+    }
+
+    public void setNomoutil(String nomoutil) {
+        this.nomoutil = nomoutil;
+    }
+
+    public Long getPression() {
         return pression;
     }
 
-    public void setPression(Double pression) {
+    public void setPression(Long pression) {
         this.pression = pression;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(Double prix) {
+        this.prix = prix;
     }
 
     public Long getIdoutil() {

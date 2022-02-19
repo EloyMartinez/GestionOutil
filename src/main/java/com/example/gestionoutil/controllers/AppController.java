@@ -3,8 +3,10 @@ package com.example.gestionoutil.controllers;
 import com.example.gestionoutil.dao.ClientDAO;
 import com.example.gestionoutil.entity.MyClientEntity;
 import com.example.gestionoutil.entity.MyElectriqueEntity;
+import com.example.gestionoutil.entity.MyHydrauliqueEntity;
 import com.example.gestionoutil.repositories.ElectricRepository;
 import com.example.gestionoutil.repositories.ClientRepository;
+import com.example.gestionoutil.repositories.HydraulicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -70,17 +72,28 @@ public class AppController {
     @Autowired
     private ElectricRepository eRepo;
 
+    @Autowired
+    private HydraulicRepository hRepo;
+
     @GetMapping("/list")
-    public String showAll(Model model) {
+    public String list(Model model) {
         model.addAttribute("electric", eRepo.findAll());
+        model.addAttribute("hidra", hRepo.findAll());
         return "list";
     }
 
-    @RequestMapping("/description")
-    public String description(Model model, MyElectriqueEntity electric) {
-        model.addAttribute("elec",electric);
+    @RequestMapping("/descriptionEl")
+    public String descriptionEl(Model model, MyElectriqueEntity ent) {
+        model.addAttribute("elec",ent);
 
-        return "description";
+        return "descriptionEl";
+    }
+
+    @RequestMapping("/descriptionHi")
+    public String descriptionHi(Model model, MyHydrauliqueEntity ent) {
+        model.addAttribute("hidr",ent);
+
+        return "descriptionHi";
     }
 
     @RequestMapping("/edit/{id}")
