@@ -6,7 +6,6 @@ import com.example.gestionoutil.entity.MyClientEntity;
 import com.example.gestionoutil.entity.MyElectriqueEntity;
 import com.example.gestionoutil.repositories.ElectricRepository;
 import com.example.gestionoutil.repositories.ClientRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -90,6 +89,14 @@ public class AppController {
         return "list";
     }
 
+
+    @RequestMapping("/description")
+    public String description(Model model, MyElectriqueEntity electric) {
+        System.out.print(electric.getIdelec());
+
+        return "list";
+    }
+
     @RequestMapping("/editUser/{id}")
     public ModelAndView showEditClientForm(@PathVariable(name="id") Long id) {
         ModelAndView mav = new ModelAndView("editUser");
@@ -146,4 +153,7 @@ public class AppController {
     {
         return "403";
     }
+
+
+
 }
