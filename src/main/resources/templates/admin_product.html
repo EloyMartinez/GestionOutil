@@ -34,6 +34,7 @@
 
         <thead>
         <tr>
+            <th>Catégorie</th>
             <th>Name</th>
             <th>id</th>
             <th>Puissance</th>
@@ -44,6 +45,7 @@
         </thead>
         <tbody>
         <tr th:each="electrique: ${erepo}">
+            <td th:text="Électrique" />
             <td th:text="${electrique.nomoutil}" />
             <td th:text="${electrique.getIdelec()}" />
             <td th:text="${electrique.puissance}" />
@@ -60,6 +62,7 @@
 
         <tbody>
         <tr th:each="hydrolique: ${hrepo}">
+            <td th:text="Hydrolique" />
             <td th:text="${hydrolique.nomoutil}" />
             <td th:text="${hydrolique.idhyd}" />
             <td th:text="${hydrolique.pression}" />
@@ -67,9 +70,11 @@
             <td th:text="${hydrolique.prix}" />
 
             <td sec:authorize="hasAnyAuthority('ADMIN')">
-                <a th:href="@{'/editProduct/' + ${hydrolique.getIdhyd()}}">Edit (Marche pas)</a>
+                <a th:href="@{'/editProduct/' + ${hydrolique.getIdhyd()}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/deleteProduct/' + ${hydrolique.getIdhyd()}}">Delete (Marche pas)</a>
+                <a th:href="@{'/deleteProduct/' + ${hydrolique.getIdhyd()}}">Delete</a>
+                <br>
+                Marche pas
             </td>
         </tr>
         </tbody>

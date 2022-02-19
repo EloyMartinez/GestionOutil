@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-<<<<<<< HEAD:src/main/resources/templates/admin_user.html
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-=======
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">>
->>>>>>> 018db05674d41d7ad7d8793aab218f4bdde0577e:src/main/resources/templates/admin.html
 <head>
     <title>Admin user</title>
 
@@ -33,10 +29,6 @@
 <div class="container">
 
     <h3>List User</h3>
-<<<<<<< HEAD:src/main/resources/templates/admin_user.html
-=======
-    
->>>>>>> 018db05674d41d7ad7d8793aab218f4bdde0577e:src/main/resources/templates/admin.html
     <table class="table table-bordered table-striped">
 
         <thead>
@@ -55,17 +47,6 @@
         </thead>
         <tbody>
         <tr th:each="client: ${listClients}">
-<<<<<<< HEAD:src/main/resources/templates/admin_user.html
-            <td th:text="${client.getIdcli()}" />
-            <td th:text="${client.getNomcli()}" />
-            <td th:text="${client.getPrenomcli()}" />
-            <td th:text="${client.getAdressecli()}" />
-            <td th:text="${client.getDatenaissancecli()}" />
-            <td th:text="${client.getTelephonecli()}" />
-            <td th:text="${client.getCourrielcli()}" />
-            <td th:text="${client.getIsAdmin() ? 'ADMIN' : 'CLIENT'}" />
-
-=======
             <td th:text="${client.getIdcli()}"></td>
             <td th:text="${client.getNomcli()}"></td>
             <td th:text="${client.getPrenomcli()}"></td>
@@ -74,11 +55,10 @@
             <td th:text="${client.getTelephonecli()}"></td>
             <td th:text="${client.getCourrielcli()}"></td>
             <td th:text="${client.getIsAdmin() ? 'ADMIN' : 'CLIENT'}"></td>
->>>>>>> 018db05674d41d7ad7d8793aab218f4bdde0577e:src/main/resources/templates/admin.html
             <td sec:authorize="hasAnyAuthority('ADMIN')">
-                <a th:href="@{'/editUser' + ${client.getIdcli()}}">Edit</a>
+                <a th:href="@{'/editUser/' + ${client.getIdcli()}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/deleteUser' + ${client.getIdcli()}}">Delete</a>
+                <a th:href="@{'/deleteUser/' + ${client.getIdcli()}}">Delete</a>
             </td>
         </tr>
         </tbody>
@@ -87,7 +67,7 @@
 
     <center>
         <form th:action="@{/addUser}" method="get">
-            <input type= "submit" value="addUser"/>
+            <input type= "submit" value="Ajouter un utilisateur"/>
         </form>
     </center>
 </div>

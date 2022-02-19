@@ -132,9 +132,6 @@ public class AppController {
 
     @PostMapping("/process_edit_product")
     public String processEditProduct(MyElectriqueEntity electrique){
-        //client = client avec nouvelles info, mais incompletes
-        //selecteduser = client avec anciennes info
-        //on met les infos manquantes dans user
         electrique.edit(selectedElectrique);
         electiqueDAO.save(electrique);
         return "redirect:/admin_product";
@@ -178,13 +175,13 @@ public class AppController {
     @RequestMapping("/deleteUser/{id}")
     public String deleteClient(@PathVariable(name="id") Long id) {
         clientDAO.delete(id);
-        return "redirect:/admin";
+        return "redirect:/admin_user";
     }
 
     @RequestMapping("/deleteProduct/{id}")
     public String deleteProduct(@PathVariable(name="id") Long id) {
         electiqueDAO.delete(id);
-        return "redirect:/admin";
+        return "redirect:/admin_product";
     }
 
 
