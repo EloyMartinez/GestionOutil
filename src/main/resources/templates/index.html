@@ -23,7 +23,7 @@
             <div class="navbar-inner">
                 <a class="brand" th:href="@{/index}"><img th:src="@{/images/logo.png}" alt="no name"/></a>
                 <form class="form-inline navbar-search" method="get" th:action="@{/search}">
-                    <input id="srchFld" class="srchTxt" type="text"/>
+                    <input name="keyword" th:value="${keyword}" class="srchTxt" type="text"/>
                     <select th:value="${toolType}" name="toolType" class="srchTxt">
                         <option value="all">TOUS</option>
                         <option value="electric">ÉLECTRIQUE</option>

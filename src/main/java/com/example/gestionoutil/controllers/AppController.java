@@ -9,6 +9,8 @@ import com.example.gestionoutil.repositories.ElectricRepository;
 import com.example.gestionoutil.repositories.ClientRepository;
 import com.example.gestionoutil.repositories.HydraulicRepository;
 import com.example.gestionoutil.repositories.ManualRepository;
+import com.example.gestionoutil.services.ElecService;
+import com.example.gestionoutil.services.HidraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -22,15 +24,16 @@ import java.util.Objects;
 @Controller
 public class AppController {
 
-
     @Autowired
     private ClientRepository clientRepository;
-
     @Autowired
     private ElectricRepository eRepo;
-
     @Autowired
     private HydraulicRepository hRepo;
+    @Autowired
+    private ElecService eService;
+    @Autowired
+    private HidraService hService;
 
     private ClientDAO clientDAO = new ClientDAO();
     private ElectriqueDAO electiqueDAO = new ElectriqueDAO();
@@ -194,15 +197,34 @@ public class AppController {
     }
 
     @RequestMapping("/search")
-    public String showToolOfType(Model model, String toolType) { //TODO: envoyer une erreur si pas d'objet dans la catégorie
-        if (Objects.equals(toolType, "electric"))
-            model.addAttribute("electric", eRepo.findAll());
-        else if (Objects.equals(toolType, "hydraulic"))
-            model.addAttribute("hydraulic", hRepo.findAll());
-        //TODO: à faire pour les outils manuels
-        else {
-            model.addAttribute("electric", eRepo.findAll());
-            model.addAttribute("hydraulic", hRepo.findAll());
+    public String showToolOfType(Model model, String toolType, String keyword) { //TODO: envoyer une erreur si pas d'objet dans la catégorie
+        //TODO: outils manuels à rejouter
+        if (keyword != "") {
+            if (Objects.equals(toolType, "electric")) {
+                List<MyElectriqueEntity> listE = eService.getByKeyword(keyword);
+                model.addAttribute("electric", listE);
+            } else if (Objects.equals(toolType, "hydraulic")) {
+                List<MyHydrauliqueEntity> listH = hService.getByKeyword(keyword);
+                model.addAttribute("hydraulic", listH);
+            } else {
+                List<MyElectriqueEntity> listE = eService.getByKeyword(keyword);
+                model.addAttribute("electric", listE);
+                List<MyHydrauliqueEntity> listH = hService.getByKeyword(keyword);
+                model.addAttribute("hydraulic", listH);
+            }
+        } else {
+            if (Objects.equals(toolType, "electric")) {
+                List<MyElectriqueEntity> listE = eService.getAll();
+                model.addAttribute("electric", listE);
+            } else if (Objects.equals(toolType, "hydraulic")) {
+                List<MyHydrauliqueEntity> listH = hService.getAll();
+                model.addAttribute("hydraulic", listH);
+            } else {
+                List<MyElectriqueEntity> listE = eService.getAll();
+                model.addAttribute("electric", listE);
+                List<MyHydrauliqueEntity> listH = hService.getAll();
+                model.addAttribute("hydraulic", listH);
+            }
         }
         return "index";
     }

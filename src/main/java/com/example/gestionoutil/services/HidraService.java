@@ -18,7 +18,7 @@ public class HidraService {
     /*
      * TODO: Get the List of Shops
      */
-    public List<MyHydrauliqueEntity> getAllShops(){
+    public List<MyHydrauliqueEntity> getAll(){
         List<MyHydrauliqueEntity> list =  (List<MyHydrauliqueEntity>)repository.findAll();
         return list;
     }
