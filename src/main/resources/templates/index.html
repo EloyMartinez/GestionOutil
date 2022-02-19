@@ -21,14 +21,14 @@
         <!-- Navbar ================================================== -->
         <div id="logoArea" class="navbar">
             <div class="navbar-inner">
-                <a class="brand" th:href="@{/#}"><img th:src="@{/images/logo.png}" alt="no name"/></a>
-                <form class="form-inline navbar-search" method="post" th:action="@{/#}">
+                <a class="brand" th:href="@{/index}"><img th:src="@{/images/logo.png}" alt="no name"/></a>
+                <form class="form-inline navbar-search" method="get" th:action="@{/search}">
                     <input id="srchFld" class="srchTxt" type="text"/>
-                    <select id="toolType" onchange="test()" class="srchTxt">
+                    <select th:value="${toolType}" name="toolType" class="srchTxt">
                         <option value="all">TOUS</option>
-                        <option value="elec">ÉLECTRIQUE</option>
-                        <option value="hydrau">HYDRAULIQUE</option>
-                        <option value="manuel">MANUEL</option>
+                        <option value="electric">ÉLECTRIQUE</option>
+                        <option value="hydraulic">HYDRAULIQUE</option>
+                        <option value="manual">MANUEL</option>
                     </select>
                     <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
                 </form>
@@ -116,10 +116,25 @@
                     </thead>
                     <tbody>
                     <tr th:each="ElectricTool: ${electric}">
-                        <td><img alt="Mjolnir" th:src="@{/images/Mjolnir.png}"></td> <!--TODO: image à rendre dynamique avec BDD-->
+                        <td><img alt="Mjolnir" th:src="@{/images/Mjolnir.png}"></td>
+                        <!--TODO: image à rendre dynamique avec BDD-->
                         <td th:text="${ElectricTool.getNomoutil()}"></td>
                         <td th:text="${ElectricTool.getPrix()}"></td>
                         <td th:text="${ElectricTool.getDescription()}"></td>
+                    </tr>
+                    <tr th:each="HydraulicTool: ${hydraulic}">
+                        <td><img alt="Mjolnir" th:src="@{/images/Mjolnir.png}"></td>
+                        <!--TODO: image à rendre dynamique avec BDD-->
+                        <td th:text="${HydraulicTool.getNomoutil()}"></td>
+                        <td th:text="${HydraulicTool.getPrix()}"></td>
+                        <td th:text="${HydraulicTool.getDescription()}"></td>
+                    </tr>
+                    <tr th:each="ManualTool: ${manual}">
+                        <td><img alt="Mjolnir" th:src="@{/images/Mjolnir.png}"></td>
+                        <!--TODO: image à rendre dynamique avec BDD-->
+                        <td th:text="${ManualTool.getNomoutil()}"></td>
+                        <td th:text="${ManualTool.getPrix()}"></td>
+                        <td th:text="${ManualTool.getDescription()}"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -165,13 +180,6 @@
 <script th:src="@{/js/noname.js}" type=text/javascript></script>
 <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/noname.js}"></script>
-
-<script>
-    function test() {
-        const x = document.getElementById("toolType").value;
-        alert("You selected: " + x);
-    }
-</script>
 
 </body>
 </html>
