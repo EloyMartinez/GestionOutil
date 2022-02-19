@@ -13,7 +13,11 @@
 
 <div class="container">
 
-    <h3>List Employees</h3>
+    <form th:action="@{/search}" method="get">
+        <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Owner Name & Shop Type" size="50" >
+        <button type="submit" class="btn btn-info" >Search</button>
+        <button type="submit" class="btn btn-info" >Reset</button>
+    </form>
 
     <hr/>
 
@@ -82,6 +86,8 @@
                 // location.href = "/myurl?param=" + value;
                 console.log(value);
             }
+
+
         </script>
 
     </table>

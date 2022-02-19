@@ -7,6 +7,8 @@ import com.example.gestionoutil.entity.MyHydrauliqueEntity;
 import com.example.gestionoutil.repositories.ElectricRepository;
 import com.example.gestionoutil.repositories.ClientRepository;
 import com.example.gestionoutil.repositories.HydraulicRepository;
+import com.example.gestionoutil.services.ElecService;
+import com.example.gestionoutil.services.HidraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -79,6 +81,27 @@ public class AppController {
     public String list(Model model) {
         model.addAttribute("electric", eRepo.findAll());
         model.addAttribute("hidra", hRepo.findAll());
+        return "list";
+    }
+
+    @Autowired
+    private ElecService Eservice;
+    @Autowired
+    private HidraService Hservice;
+
+
+    @RequestMapping("/search")
+    public String search( Model model, String keyword) {
+        if(keyword!=null) {
+            List<MyElectriqueEntity> listE = Eservice.getByKeyword(keyword);
+            model.addAttribute("electric", listE);
+            List<MyHydrauliqueEntity> listH = Hservice.getByKeyword(keyword);
+            model.addAttribute("hidra", listH);
+        }else {
+            List<MyElectriqueEntity> listE = Eservice.getAllShops();
+            model.addAttribute("electric", listE);}
+            List<MyHydrauliqueEntity> listH = Hservice.getByKeyword(keyword);
+            model.addAttribute("hidra", listH);
         return "list";
     }
 
