@@ -52,12 +52,10 @@ public class AppController {
         return "register";
     }
 
-
     @GetMapping("/users")
     public String users() {
         return "users";
     }
-
 
     @PostMapping("/process_register")
     public String processRegister(MyClientEntity client) {
@@ -92,14 +90,12 @@ public class AppController {
     @RequestMapping("/descriptionHi")
     public String descriptionHi(Model model, MyHydrauliqueEntity ent) {
         model.addAttribute("hidr",ent);
-
         return "descriptionHi";
     }
 
     @RequestMapping("/edit/{id}")
     public ModelAndView showEditClientForm(@PathVariable(name="id") Long id) {
         ModelAndView mav = new ModelAndView("editUser");
-
         MyClientEntity client = clientDAO.getById(id);
         selectedUser = client;
         mav.addObject("client", client);
@@ -122,11 +118,14 @@ public class AppController {
     }
 
     @GetMapping("/403")
-    public String error403()
-    {
+    public String error403() {
         return "403";
     }
 
-
+    @GetMapping("/index")
+    public String index(Model model) {
+        model.addAttribute("electric", eRepo.findAll());
+        return "index";
+    }
 
 }

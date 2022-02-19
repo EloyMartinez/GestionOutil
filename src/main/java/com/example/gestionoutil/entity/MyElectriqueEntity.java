@@ -1,6 +1,7 @@
 package com.example.gestionoutil.entity;
 
 import javax.persistence.*;
+import java.awt.*;
 
 @Entity
 @Table(name = "electrique", schema = "gestionoutils", catalog = "")
