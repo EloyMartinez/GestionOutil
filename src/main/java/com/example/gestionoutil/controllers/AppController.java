@@ -78,9 +78,9 @@ public class AppController {
 
     @RequestMapping("/description")
     public String description(Model model, MyElectriqueEntity electric) {
-        System.out.print(electric.getIdelec());
+        model.addAttribute("elec",electric);
 
-        return "list";
+        return "description";
     }
 
     @RequestMapping("/edit/{id}")
