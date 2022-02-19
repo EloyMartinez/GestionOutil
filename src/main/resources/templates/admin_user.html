@@ -10,17 +10,6 @@
           crossorigin="anonymous"/>
 </head>
 <body>
-<div align="center">
-    <div sec:authorize="isAuthenticated()">
-        Bonjour <span sec:authentication=>Nom</span>
-        &nbsp;
-        <span sec:athentication="principal.authorities">Role</span>
-
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Logout"/>
-        </form>
-    </div>
-</div>
 <br>
 <center>
     <h3 th:inline="text">Bienvenue Admin</h3>
@@ -70,6 +59,14 @@
             <input type= "submit" value="Ajouter un utilisateur"/>
         </form>
     </center>
+    <div align="center">
+        &nbsp
+        &nbsp
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout"/>
+        </form>
+    </div>
+</div>
 </div>
 
 </body>

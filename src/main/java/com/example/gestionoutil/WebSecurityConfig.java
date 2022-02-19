@@ -42,15 +42,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         String[] permitted = new String[]{
                 "/", "/register","/about","/images/**",
                 "/css/**","/fonts/**","/vendor/**","/js/**","/images.icons/**",
-                "/403", "/list"
+                "/403", "/list", "/index"
+        };
+        String[] adminPermitted = new String[]{
+                "/admin_user", "/admin_product"
         };
         http.authorizeRequests()
                 .antMatchers(permitted).permitAll()
-                //.anyRequest().authenticated() //TODO: ne pas oublier de décommenter
+                .antMatchers(adminPermitted).hasAnyAuthority("ADMIN")
+                .anyRequest().authenticated() //TODO: ne pas oublier de décommenter
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/users")
                 .and()
-                .logout().permitAll();
+                .logout().permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/403")
+        ;
     }
 }

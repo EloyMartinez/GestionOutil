@@ -51,6 +51,8 @@ public class AppController {
         return "admin_user";
     }
 
+
+
     @GetMapping("/admin_product")
     public String admin_product(Model model) {
         model.addAttribute("hrepo", hRepo.findAll());
