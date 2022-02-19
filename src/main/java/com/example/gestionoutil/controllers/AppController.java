@@ -107,11 +107,14 @@ public class AppController {
     }
 
     //POST MAPPING
-    @PostMapping("/add_success")
-    public String addSucces(MyClientEntity client) {
+    @RequestMapping(value = "/add_success", method = RequestMethod.POST)
+    public String addSucces(MyClientEntity client, @RequestParam(value = "adminCheckbox", required = false) String checkboxValue) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         client.setMdpcli(passwordEncoder.encode(client.getMdpcli()));
-        client.setAdmin(false);
+        if (checkboxValue != null)
+            client.setAdmin(true);
+        else
+            client.setAdmin(false);
         clientDAO = new ClientDAO();
         clientDAO.save(client);
         return "redirect:/admin_user";
@@ -124,6 +127,8 @@ public class AppController {
         //selecteduser = client avec anciennes info
         if (checkboxValue != null)
             client.setAdmin(true);
+        else
+            client.setAdmin(false);
         client.edit(selectedUser); //on met les infos manquantes dans user
         clientDAO.save(client);
         return "redirect:/admin_user";
