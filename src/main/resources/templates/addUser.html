@@ -33,9 +33,9 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form" th:action="@{/process_register}" th:object="${client}" method="post">
+            <form class="login100-form validate-form" th:action="@{/add_success}" th:object="${client}" method="post">
                 <span class="login100-form-title p-b-26">
-                    Créer un compte
+                    Ajouter un utilisateur
                 </span>
 
                 <div>
@@ -92,22 +92,19 @@
                     <span class="focus-input100" data-placeholder="Téléphone"></span>
                 </div>
 
+                <center>
+                    <!-- Todo faire fonctionner les checkbox-->
+                    <span>Admin</span>
+                    <input type="checkbox"><br><br>
+                </center>
+
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button class="login100-form-btn">
-                            Créer un compte
+                            Ajouter
                         </button>
                     </div>
-                </div>
-
-                <div class="text-center p-t-50">
-                    <span class="txt1">
-                        Vous avez déjà un compte?
-                    </span>
-                    <a class="txt2" th:href="@{/login}">
-                        Se connecter
-                    </a>
                 </div>
             </form>
         </div>

@@ -6,7 +6,7 @@
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-          crossorigin="anonymous" />
+          crossorigin="anonymous"/>
 </head>
 
 <body>
@@ -22,25 +22,54 @@
         <thead>
         <tr>
             <th>Name</th>
-            <th>idElec</th>
-            <th>idOutil</th>
+            <th>id</th>
+            <th>Puissance</th>
             <th>description</th>
+            <th>prix</th>
+
         </tr>
         </thead>
         <tbody>
         <tr th:each="ElectricTool: ${electric}"
-            th:some-field="${ElectricTool.getNomOutil()}" onclick="rowClicked(this.getAttribute('some-field'))">
+            th:some-field="${ElectricTool.nomoutil}" onclick="rowClicked(this.getAttribute('some-field'))">
 
-            <td th:text="${ElectricTool.getNomOutil()}" />
-            <td th:text="${ElectricTool.getIdelec()}" />
-            <td th:text="${ElectricTool.getIdoutil()}" />
+            <td th:text="${ElectricTool.nomoutil}"></td>
+            <td th:text="${ElectricTool.getIdelec()} + ${ElectricTool.getIdoutil()}"></td>
+            <td th:text="${ElectricTool.puissance}"></td>
+            <td th:text="${ElectricTool.description}"></td>
+            <td th:text="${ElectricTool.prix}"></td>
+
             <td>
+                <form th:action="@{/descriptionEl}" method="post" th:object="${ElectricTool}">
+                    <input style="display: none" type="hidden" th:value="*{nomoutil}" name="nomoutil"/>
+                    <input style="display: none" type="hidden" th:value="*{idelec}" name="idelec"/>
+                    <input style="display: none" type="hidden" th:value="*{idoutil}" name="idoutil"/>
+                    <input style="display: none" type="hidden" th:value="*{puissance}" name="puissance"/>
+                    <input style="display: none" type="hidden" th:value="*{description}" name="description"/>
+                    <input style="display: none" type="hidden" th:value="*{prix}" name="prix"/>
+                    <input type="submit" value="Description"/>
 
-                <form th:action="@{/description}"  method="post" th:object="${ElectricTool}">
-                    <input style="display: none" type="hidden" th:value="*{nomOutil}" name="nomOutil" />
-                    <input style="display: none" type="hidden" th:value="*{idelec}" name="idelec" />
-                    <input style="display: none" type="hidden" th:value="*{idoutil}" name="idoutil" />
-                    <input type="submit" value="Pokaż" />
+                </form>
+            </td>
+        </tr>
+        <tr th:each="hidraTool: ${hidra}"
+            th:some-field="${hidraTool.nomoutil}" onclick="rowClicked(this.getAttribute('some-field'))">
+
+            <td th:text="${hidraTool.nomoutil}"></td>
+            <td th:text="${hidraTool.idhyd}"></td>
+            <td th:text="${hidraTool.pression}"></td>
+            <td th:text="${hidraTool.description}"></td>
+            <td th:text="${hidraTool.prix}"></td>
+
+            <td>
+                <form th:action="@{/descriptionHi}" method="post" th:object="${hidraTool}">
+                    <input style="display: none" type="hidden" th:value="*{nomoutil}" name="nomoutil"/>
+                    <input style="display: none" type="hidden" th:value="*{idhyd}" name="idhyd"/>
+                    <input style="display: none" type="hidden" th:value="*{idoutil}" name="idoutil"/>
+                    <input style="display: none" type="hidden" th:value="*{pression}" name="pression"/>
+                    <input style="display: none" type="hidden" th:value="*{description}" name="description"/>
+                    <input style="display: none" type="hidden" th:value="*{prix}" name="prix"/>
+                    <input type="submit" value="Description"/>
 
                 </form>
             </td>

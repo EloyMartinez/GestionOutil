@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Admin Product</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+</head>
+<body>
+<div align="center">
+    <div sec:authorize="isAuthenticated()">
+        Bonjour <span sec:authentication=>Nom</span>
+        &nbsp;
+        <span sec:athentication="principal.authorities">Role</span>
+
+        <form th:action="@{/logout}" method="post">
+            <input type= "submit" value="Logout"/>
+        </form>
+    </div>
+</div>
+<br>
+<center>
+    <h3 th:inline="text"> Bienvenue Admin</h3>
+</center>
+
+<div class="container">
+
+    <h3>List Product</h3>
+    <table class="table table-bordered table-striped">
+
+        <thead>
+        <tr>
+            <th>Catégorie</th>
+            <th>Name</th>
+            <th>id</th>
+            <th>Puissance</th>
+            <th>description</th>
+            <th>prix</th>
+            <th sec:authorize="hasAnyAuthority('ADMIN')"> Actions </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="electrique: ${erepo}">
+            <td th:text="Électrique" />
+            <td th:text="${electrique.nomoutil}" />
+            <td th:text="${electrique.getIdelec()}" />
+            <td th:text="${electrique.puissance}" />
+            <td th:text="${electrique.description}" />
+            <td th:text="${electrique.prix}" />
+
+           <td sec:authorize="hasAnyAuthority('ADMIN')">
+                <a th:href="@{'/editProduct/' + ${electrique.getIdelec()}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/deleteProduct/' + ${electrique.getIdelec()}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+
+        <tbody>
+        <tr th:each="hydrolique: ${hrepo}">
+            <td th:text="Hydrolique" />
+            <td th:text="${hydrolique.nomoutil}" />
+            <td th:text="${hydrolique.idhyd}" />
+            <td th:text="${hydrolique.pression}" />
+            <td th:text="${hydrolique.description}" />
+            <td th:text="${hydrolique.prix}" />
+
+            <td sec:authorize="hasAnyAuthority('ADMIN')">
+                <a th:href="@{'/editProduct/' + ${hydrolique.getIdhyd()}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/deleteProduct/' + ${hydrolique.getIdhyd()}}">Delete</a>
+                <br>
+                Marche pas
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+</body>
+</html>

@@ -41,7 +41,6 @@ public class MyClientEntity {
     @Column(name = "isadmin")
     private boolean isadmin;
 
-
     public MyClientEntity() {
     }
 
