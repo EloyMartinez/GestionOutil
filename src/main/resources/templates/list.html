@@ -41,11 +41,34 @@
 
 
             <td>
-                <form th:action="@{/description}"  method="post" th:object="${ElectricTool}">
+                <form th:action="@{/descriptionEl}"  method="post" th:object="${ElectricTool}">
                     <input style="display: none" type="hidden" th:value="*{nomoutil}" name="nomoutil" />
                     <input style="display: none" type="hidden" th:value="*{idelec}" name="idelec" />
                     <input style="display: none" type="hidden" th:value="*{idoutil}" name="idoutil" />
                     <input style="display: none" type="hidden" th:value="*{puissance}" name="puissance" />
+                    <input style="display: none" type="hidden" th:value="*{description}" name="description" />
+                    <input style="display: none" type="hidden" th:value="*{prix}" name="prix" />
+                    <input type="submit" value="Description" />
+
+                </form>
+            </td>
+        </tr>
+        <tr th:each="hidraTool: ${hidra}"
+            th:some-field="${hidraTool.nomoutil}" onclick="rowClicked(this.getAttribute('some-field'))">
+
+            <td th:text="${hidraTool.nomoutil}" />
+            <td th:text="${hidraTool.idhyd} + ${hidraTool.getIdoutil()}" />
+            <td th:text="${hidraTool.pression}" />
+            <td th:text="${hidraTool.description}" />
+            <td th:text="${hidraTool.prix}" />
+
+
+            <td>
+                <form th:action="@{/descriptionHi}"  method="post" th:object="${hidraTool}">
+                    <input style="display: none" type="hidden" th:value="*{nomoutil}" name="nomoutil" />
+                    <input style="display: none" type="hidden" th:value="*{idhyd}" name="idhyd" />
+                    <input style="display: none" type="hidden" th:value="*{idoutil}" name="idoutil" />
+                    <input style="display: none" type="hidden" th:value="*{pression}" name="pression" />
                     <input style="display: none" type="hidden" th:value="*{description}" name="description" />
                     <input style="display: none" type="hidden" th:value="*{prix}" name="prix" />
                     <input type="submit" value="Description" />
