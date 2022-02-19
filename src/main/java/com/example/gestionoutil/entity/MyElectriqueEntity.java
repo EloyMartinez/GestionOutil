@@ -1,6 +1,7 @@
 package com.example.gestionoutil.entity;
 
 import javax.persistence.*;
+import java.awt.*;
 
 @Entity
 @Table(name = "electrique", schema = "gestionoutils", catalog = "")
@@ -96,5 +97,14 @@ public class MyElectriqueEntity {
         result = 31 * result + (puissance != null ? puissance.hashCode() : 0);
         result = 31 * result + (idoutil != null ? idoutil.hashCode() : 0);
         return Math.toIntExact(result);
+    }
+
+    public void edit(MyElectriqueEntity oldElectrique){
+        if (this.idelec == null) this.idelec = oldElectrique.idelec;
+        if (this.puissance == null) this.puissance = oldElectrique.puissance;
+        if (this.nomoutil == null) this.nomoutil = oldElectrique.nomoutil;
+        if (this.description== null) this.description = oldElectrique.description;
+        if (this.prix== null) this.prix = oldElectrique.prix;
+
     }
 }
