@@ -69,7 +69,8 @@
                 </div>
 
                 <div class="wrap-input100">
-                    <input type="checkbox" name="role" th:text="Role" th:field="*{isAdmin}">
+                    <input type="checkbox" name="role" th:text="Role" th:checked="*{isAdmin}"
+                        th:id="|isAdmin|">
                     <span class="focus-input100"></span>
                 </div>
 
