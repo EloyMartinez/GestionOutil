@@ -101,6 +101,9 @@ public class MyElectriqueEntity {
     public void edit(MyElectriqueEntity oldElectrique){
         if (this.idelec == null) this.idelec = oldElectrique.idelec;
         if (this.puissance == null) this.puissance = oldElectrique.puissance;
-        if (this.nomOutil == null) this.nomOutil = oldElectrique.nomOutil;
+        if (this.nomoutil == null) this.nomoutil = oldElectrique.nomoutil;
+        if (this.description== null) this.description = oldElectrique.description;
+        if (this.prix== null) this.prix = oldElectrique.prix;
+
     }
 }

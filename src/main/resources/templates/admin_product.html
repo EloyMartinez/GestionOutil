@@ -31,17 +31,21 @@
 
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Nom</th>
+            <th>Name</th>
+            <th>id</th>
             <th>Puissance</th>
+            <th>description</th>
+            <th>prix</th>
             <th sec:authorize="hasAnyAuthority('ADMIN')"> Actions </th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="electrique: ${listProduct}">
+            <td th:text="${electrique.nomoutil}" />
             <td th:text="${electrique.getIdelec()}" />
-            <td th:text="${electrique.getNomOutil()}" />
-            <td th:text="${electrique.getPuissance()}" />
+            <td th:text="${electrique.puissance}" />
+            <td th:text="${electrique.description}" />
+            <td th:text="${electrique.prix}" />
 
            <td sec:authorize="hasAnyAuthority('ADMIN')">
                 <a th:href="@{'/editProduct/' + ${electrique.getIdelec()}}">Edit</a>

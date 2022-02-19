@@ -33,19 +33,29 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form" th:action="@{/process_edit}" th:object="${electrique}" method="post">
+            <form class="login100-form validate-form" th:action="@{/process_edit_product}" th:object="${electrique}" method="post">
                 <span class="login100-form-title p-b-26">
                     Modifier un produit
                 </span>
 
                 <div class="wrap-input100">
                     <span><b>Nom</b></span>
-                    <input class="input100" type="text" name="nom" th:field="*{nomOutil}" required>
+                    <input class="input100" type="text" name="nom" th:field="*{nomoutil}" required>
                 </div>
 
                 <div class="wrap-input100">
                     <span><b>Puissance</b></span>
                     <input class="input100" type="text" name="puissance" th:field="*{puissance}" required>
+                </div>
+
+                <div class="wrap-input100">
+                    <span><b>Description</b></span>
+                    <input class="input100" type="text" name="description" th:field="*{description}" required>
+                </div>
+
+                <div class="wrap-input100">
+                    <span><b>Prix</b></span>
+                    <input class="input100" type="text" name="description" th:field="*{prix}" required>
                 </div>
 
                 <div class="container-login100-form-btn">

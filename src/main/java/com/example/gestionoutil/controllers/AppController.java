@@ -113,7 +113,7 @@ public class AppController {
         //selecteduser = client avec anciennes info
         client.edit(selectedUser); //on met les infos manquantes dans user
         clientDAO.save(client);
-        return "redirect:/admin";
+        return "redirect:/admin_user";
     }
 
     @PostMapping("/process_edit_product")
@@ -123,7 +123,7 @@ public class AppController {
          //on met les infos manquantes dans user
         electrique.edit(selectedElectrique);
         electiqueDAO.save(electrique);
-        return "redirect:/admin";
+        return "redirect:/admin_product";
     }
 
     @RequestMapping("/editProduct/{id}")
