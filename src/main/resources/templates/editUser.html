@@ -39,33 +39,37 @@
                 </span>
 
                 <div>
-                    <span>Professionnel</span>
-                    <input type="checkbox">
+                    <center>
+                        <span>Professionnel</span>
+                        <input type="checkbox"><br><br>
+                    </center>
+
                 </div>
 
                 <div class="wrap-input100">
+
+                    <span><b>Prénom</b></span>
                     <input class="input100" type="text" name="first-name" th:field="*{prenomcli}" required>
-                    <span class="focus-input100" data-placeholder="Prénom"></span>
                 </div>
 
                 <div class="wrap-input100">
+                    <span><b>Nom</b></span>
                     <input class="input100" type="text" name="name" th:field="*{nomcli}" required>
-                    <span class="focus-input100" data-placeholder="Nom"></span>
                 </div>
 
                 <div class="wrap-input100">
+                    <span><b>Adresse</b></span>
                     <input class="input100" type="text" name="address" th:field="*{adressecli}">
-                    <span class="focus-input100" data-placeholder="Adresse"></span>
-                </div>
-
-                <div class="wrap-input100"> <!--TODO: Placer l'intitulé du champ au-dessus-->
-                    <input class="input100" type="date" name="birth-date" th:field="*{datenaissancecli}">
-                    <span class="focus-input100" data-placeholder="Date de naissance"></span>
                 </div>
 
                 <div class="wrap-input100">
+                    <span><b>Date de naissance</b></span>
+                    <input class="input100" type="date" name="birth-date" th:field="*{datenaissancecli}">
+                </div>
+
+                <div class="wrap-input100">
+                    <span><b>Téléphone</b></span>
                     <input class="input100" type="text" name="phone" th:field="*{telephonecli}">
-                    <span class="focus-input100" data-placeholder="Téléphone"></span>
                 </div>
 
                 <div class="container-login100-form-btn">

@@ -75,4 +75,10 @@ public class MyElectriqueEntity {
         result = 31 * result + (idoutil != null ? idoutil.hashCode() : 0);
         return Math.toIntExact(result);
     }
+
+    public void edit(MyElectriqueEntity oldElectrique){
+        if (this.idelec == null) this.idelec = oldElectrique.idelec;
+        if (this.puissance == null) this.puissance = oldElectrique.puissance;
+        if (this.nomOutil == null) this.nomOutil = oldElectrique.nomOutil;
+    }
 }
