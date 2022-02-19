@@ -158,7 +158,6 @@ public class AppController {
     @RequestMapping("/editUser/{id}")
     public ModelAndView showEditClientForm(@PathVariable(name="id") Long id) {
         ModelAndView mav = new ModelAndView("editUser");
-
         MyClientEntity client = clientDAO.getById(id);
         selectedUser = client;
         mav.addObject("client", client);
@@ -188,5 +187,11 @@ public class AppController {
         return "redirect:/admin";
     }
 
+
+    @GetMapping("/index")
+    public String index(Model model) {
+        model.addAttribute("electric", eRepo.findAll());
+        return "index";
+    }
 
 }

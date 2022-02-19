@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
 <html xmlns:th="http://www.thymeleaf.org"
+<<<<<<< HEAD:src/main/resources/templates/admin_user.html
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+=======
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">>
+>>>>>>> 018db05674d41d7ad7d8793aab218f4bdde0577e:src/main/resources/templates/admin.html
 <head>
     <title>Admin user</title>
 
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-          crossorigin="anonymous" />
+          crossorigin="anonymous"/>
 </head>
 <body>
 <div align="center">
@@ -18,7 +21,7 @@
         <span sec:athentication="principal.authorities">Role</span>
 
         <form th:action="@{/logout}" method="post">
-            <input type= "submit" value="Logout"/>
+            <input type="submit" value="Logout"/>
         </form>
     </div>
 </div>
@@ -30,6 +33,10 @@
 <div class="container">
 
     <h3>List User</h3>
+<<<<<<< HEAD:src/main/resources/templates/admin_user.html
+=======
+    
+>>>>>>> 018db05674d41d7ad7d8793aab218f4bdde0577e:src/main/resources/templates/admin.html
     <table class="table table-bordered table-striped">
 
         <thead>
@@ -43,11 +50,12 @@
             <th>Courriel</th>
             <th>Role</th>
 
-            <th sec:authorize="hasAnyAuthority('ADMIN')"> Actions </th>
+            <th sec:authorize="hasAnyAuthority('ADMIN')"> Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="client: ${listClients}">
+<<<<<<< HEAD:src/main/resources/templates/admin_user.html
             <td th:text="${client.getIdcli()}" />
             <td th:text="${client.getNomcli()}" />
             <td th:text="${client.getPrenomcli()}" />
@@ -57,6 +65,16 @@
             <td th:text="${client.getCourrielcli()}" />
             <td th:text="${client.getIsAdmin() ? 'ADMIN' : 'CLIENT'}" />
 
+=======
+            <td th:text="${client.getIdcli()}"></td>
+            <td th:text="${client.getNomcli()}"></td>
+            <td th:text="${client.getPrenomcli()}"></td>
+            <td th:text="${client.getAdressecli()}"></td>
+            <td th:text="${client.getDatenaissancecli()}"></td>
+            <td th:text="${client.getTelephonecli()}"></td>
+            <td th:text="${client.getCourrielcli()}"></td>
+            <td th:text="${client.getIsAdmin() ? 'ADMIN' : 'CLIENT'}"></td>
+>>>>>>> 018db05674d41d7ad7d8793aab218f4bdde0577e:src/main/resources/templates/admin.html
             <td sec:authorize="hasAnyAuthority('ADMIN')">
                 <a th:href="@{'/editUser' + ${client.getIdcli()}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
