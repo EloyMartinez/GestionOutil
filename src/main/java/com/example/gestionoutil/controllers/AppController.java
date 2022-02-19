@@ -51,8 +51,6 @@ public class AppController {
         return "admin_user";
     }
 
-
-
     @GetMapping("/admin_product")
     public String admin_product(Model model) {
         model.addAttribute("hrepo", hRepo.findAll());
@@ -87,12 +85,6 @@ public class AppController {
     public String error403()
     {
         return "403";
-    }
-
-    @GetMapping("/addUser")
-    public String addUser(Model model){
-        model.addAttribute("client", new MyClientEntity());
-        return "addUser";
     }
 
 
@@ -197,4 +189,15 @@ public class AppController {
         return "index";
     }
 
+    //Todo
+    @RequestMapping("/addProduct")
+    public String addProduct(){
+        return "addProduct";
+    }
+
+    @RequestMapping("/addUser")
+    public String addUser(Model model){
+        model.addAttribute("client", new MyClientEntity());
+        return "addUser";
+    }
 }

@@ -11,17 +11,6 @@
           crossorigin="anonymous" />
 </head>
 <body>
-<div align="center">
-    <div sec:authorize="isAuthenticated()">
-        Bonjour <span sec:authentication=>Nom</span>
-        &nbsp;
-        <span sec:athentication="principal.authorities">Role</span>
-
-        <form th:action="@{/logout}" method="post">
-            <input type= "submit" value="Logout"/>
-        </form>
-    </div>
-</div>
 <br>
 <center>
     <h3 th:inline="text"> Bienvenue Admin</h3>
@@ -38,8 +27,9 @@
             <th>Name</th>
             <th>id</th>
             <th>Puissance</th>
-            <th>description</th>
-            <th>prix</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th>Stock</th>
             <th sec:authorize="hasAnyAuthority('ADMIN')"> Actions </th>
         </tr>
         </thead>
@@ -51,8 +41,9 @@
             <td th:text="${electrique.puissance}" />
             <td th:text="${electrique.description}" />
             <td th:text="${electrique.prix}" />
-
-           <td sec:authorize="hasAnyAuthority('ADMIN')">
+            <!-- Todo -->
+            <td th:text="22" />
+            <td sec:authorize="hasAnyAuthority('ADMIN')">
                 <a th:href="@{'/editProduct/' + ${electrique.getIdelec()}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a th:href="@{'/deleteProduct/' + ${electrique.getIdelec()}}">Delete</a>
@@ -68,6 +59,8 @@
             <td th:text="${hydrolique.pression}" />
             <td th:text="${hydrolique.description}" />
             <td th:text="${hydrolique.prix}" />
+            <!-- Todo -->
+            <td th:text="22" />
 
             <td sec:authorize="hasAnyAuthority('ADMIN')">
                 <a th:href="@{'/editProduct/' + ${hydrolique.getIdhyd()}}">Edit</a>
@@ -80,6 +73,20 @@
         </tbody>
 
     </table>
+
+    <center>
+        <form th:action="@{/addProduct}" method="post">
+            <input type= "submit" value="Ajouter un produit (A faire)"/>
+        </form>
+    </center>
+    <div align="center">
+        &nbsp
+        &nbsp
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout"/>
+        </form>
+    </div>
+
 </div>
 
 </body>
