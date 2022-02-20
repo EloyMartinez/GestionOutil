@@ -1,6 +1,6 @@
 package com.example.gestionoutil.entity;
-
 import javax.persistence.*;
+import java.util.Base64;
 
 @Entity
 @Table(name = "hydraulique", schema = "gestionoutils", catalog = "")
@@ -24,6 +24,9 @@ public class MyHydrauliqueEntity {
     @Basic
     @Column(name = "prix")
     private Double prix;
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
 
     public MyHydrauliqueEntity() {
     }
@@ -51,6 +54,22 @@ public class MyHydrauliqueEntity {
     public void setPression(Long pression) {
         this.pression = pression;
     }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public String displayImage(){
+        return Base64.getEncoder().encodeToString(image);
+    }
+
+
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+
 
     public String getDescription() {
         return description;

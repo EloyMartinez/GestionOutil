@@ -2,6 +2,7 @@ package com.example.gestionoutil.entity;
 
 import javax.persistence.*;
 import java.awt.*;
+import java.util.Base64;
 
 @Entity
 @Table(name = "electrique", schema = "gestionoutils", catalog = "")
@@ -25,6 +26,9 @@ public class MyElectriqueEntity {
     @Basic
     @Column(name = "prix")
     private Double prix;
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
 
     public MyElectriqueEntity() {
     }
@@ -61,7 +65,7 @@ public class MyElectriqueEntity {
         this.idelec = idelec;
     }
 
-    public long getPuissance() { return puissance;}
+    public Long getPuissance() { return puissance;}
 
     public void setPuissance(Long puissance) {
         this.puissance = puissance;
@@ -73,6 +77,18 @@ public class MyElectriqueEntity {
 
     public void setIdoutil(Long idoutil) {
         this.idoutil = idoutil;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public String displayImage(){
+        return Base64.getEncoder().encodeToString(image);
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     @Override

@@ -41,4 +41,6 @@ public class HydrauliqueDAO {
         em.remove(em.find(MyHydrauliqueEntity.class, id));
         et.commit();
     }
+
+
 }
