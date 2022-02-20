@@ -16,7 +16,7 @@ public class ElecService {
     /*
      * TODO: Get the List of Shops
      */
-    public List<MyElectriqueEntity> getAllShops(){
+    public List<MyElectriqueEntity> getAll(){
         List<MyElectriqueEntity> list =  (List<MyElectriqueEntity>)repository.findAll();
         return list;
     }

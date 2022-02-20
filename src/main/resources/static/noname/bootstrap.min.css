@@ -4063,8 +4063,8 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
     background-image: -o-linear-gradient(top, #222, #111);
     background-image: linear-gradient(to bottom, #222, #111);
     background-repeat: repeat-x;
-    border-color: #252525;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0)
+    border-color: #3F3E3EFF;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#3F3E3EFF', GradientType=0)
 }
 
 .navbar-inverse .brand, .navbar-inverse .nav > li > a {

@@ -531,10 +531,6 @@ iframe {
     padding-top: 18px;
 }
 
-#carouselBlk, #header {
-    background: url(../../images/headerRepeat.png) repeat-x 0 0 #f7f7f7;
-}
-
 #srchFld {
     background: url(../../images/search.png) no-repeat 4px center #fff;
 }
@@ -720,7 +716,7 @@ iframe {
 
 /* Footer section--------------- */
 #footerSection {
-    background: #202020;
+    background: #3f3e3e;
     color: white;
     padding: 28px 0 44px;
     margin-top: 20px;
@@ -1024,8 +1020,6 @@ table {
     background: white;
     border-radius: 6px;
     overflow: hidden;
-    max-width: 870px;
-    width: 870px;
     margin: 0 auto;
     position: relative;
 }
@@ -1069,6 +1063,11 @@ table td.c, table th.c {
 
 table td.r, table th.r {
     text-align: center;
+}
+
+.overview-description {
+    max-width: 870px;
+    width: 870px;
 }
 
 @media screen and (max-width: 35.5em) {
@@ -1151,5 +1150,10 @@ blockquote {
 
 #product-price-col {
     max-width: 80px;
-    width: 50px;
+    width: 70px;
+}
+
+#full-description {
+    max-width: 1200px;
+    width: 1200px;
 }
