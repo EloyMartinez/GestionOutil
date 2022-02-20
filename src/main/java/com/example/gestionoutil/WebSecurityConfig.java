@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/vendor/**","/js/**", "/noname/**"
         };
         String[] adminPermitted = new String[]{
-                "/admin_user", "/admin_product", "/editProductElec", "/editProductHydro"
+                "/admin_user", "/admin_product", "/editProductElec", "/editProductHydrau"
         };
         http.authorizeRequests()
                 .antMatchers(permitted).permitAll()

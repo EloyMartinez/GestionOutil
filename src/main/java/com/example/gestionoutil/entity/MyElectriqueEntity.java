@@ -61,9 +61,7 @@ public class MyElectriqueEntity {
         this.idelec = idelec;
     }
 
-    public long getPuissance() {
-        return puissance;
-    }
+    public long getPuissance() { return puissance;}
 
     public void setPuissance(Long puissance) {
         this.puissance = puissance;

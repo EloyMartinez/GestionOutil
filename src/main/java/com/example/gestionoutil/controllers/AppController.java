@@ -9,13 +9,13 @@ import com.example.gestionoutil.entity.MyHydrauliqueEntity;
 import com.example.gestionoutil.repositories.ElectricRepository;
 import com.example.gestionoutil.repositories.ClientRepository;
 import com.example.gestionoutil.repositories.HydraulicRepository;
-import com.example.gestionoutil.repositories.ManualRepository;
 import com.example.gestionoutil.services.ElecService;
 import com.example.gestionoutil.services.HidraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelExtensionsKt;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -42,7 +42,7 @@ public class AppController {
 
     public static MyClientEntity selectedUser;
     public static MyElectriqueEntity selectedElectrique;
-    public static MyHydrauliqueEntity selectedHyrdolique;
+    public static MyHydrauliqueEntity selectedHydraulique;
 
     //GET MAPPING
     @GetMapping("")
@@ -112,6 +112,20 @@ public class AppController {
         return "redirect:/admin_user";
     }
 
+    @RequestMapping(value = "/add_product_elec_success", method = RequestMethod.POST)
+    public String add_product_elec_success(MyElectriqueEntity electrique){
+        electiqueDAO = new ElectriqueDAO();
+        electiqueDAO.save(electrique);
+        return "redirect:/admin_product";
+    }
+
+    @RequestMapping(value = "/add_product_hydrau_success", method = RequestMethod.POST)
+    public String add_product_hydrau_success(MyHydrauliqueEntity hydraulique){
+        hydrauliqueDAO = new HydrauliqueDAO();
+        hydrauliqueDAO.save(hydraulique);
+        return "redirect:/admin_product";
+    }
+
     @RequestMapping(value = "/process_edit_user", method = RequestMethod.POST)
     public String processEditUser(MyClientEntity client, @RequestParam(value = "adminCheckbox", required = false) String checkboxValue) {
         //client = client avec nouvelles info, mais incompletes
@@ -137,9 +151,9 @@ public class AppController {
         return "redirect:/admin_product";
     }
 
-    @PostMapping("/process_edit_product_hyrdo")
-    public String processEditProductHydro(MyHydrauliqueEntity hydraulique){
-        hydraulique.edit(selectedHyrdolique);
+    @PostMapping("/process_edit_product_hydrau")
+    public String processEditProductHydrau(MyHydrauliqueEntity hydraulique){
+        hydraulique.edit(selectedHydraulique);
         hydrauliqueDAO.save(hydraulique);
         return "redirect:/admin_product";
     }
@@ -175,12 +189,12 @@ public class AppController {
         return mav;
     }
 
-    @RequestMapping("/editProductHydro/{id}")
-    public ModelAndView showEditProductHydroForm(@PathVariable(name="id") Long id) {
-        ModelAndView mav = new ModelAndView("editProductHydro");
+    @RequestMapping("/editProductHydrau/{id}")
+    public ModelAndView showEditProductHydrauForm(@PathVariable(name="id") Long id) {
+        ModelAndView mav = new ModelAndView("editProduitHydrau");
         MyHydrauliqueEntity hydraulique = hydrauliqueDAO.getById(id);
-        selectedHyrdolique = hydraulique;
-        mav.addObject("editProductHydro", hydraulique);
+        selectedHydraulique = hydraulique;
+        mav.addObject("editProductHydrau", hydraulique);
         return mav;
     }
 
@@ -190,9 +204,15 @@ public class AppController {
         return "redirect:/admin_user";
     }
 
-    @RequestMapping("/deleteProduct/{id}")
-    public String deleteProduct(@PathVariable(name = "id") Long id) {
+    @RequestMapping("/deleteProductElec/{id}")
+    public String deleteProductElec(@PathVariable(name = "id") Long id) {
         electiqueDAO.delete(id);
+        return "redirect:/admin_product";
+    }
+
+    @RequestMapping("/deleteProductHydrau/{id}")
+    public String deleteProductHydrau(@PathVariable(name = "id") Long id) {
+        hydrauliqueDAO.delete(id);
         return "redirect:/admin_product";
     }
 
@@ -203,10 +223,16 @@ public class AppController {
         return "index";
     }
 
-    //Todo
-    @RequestMapping("/addProduct")
-    public String addProduct() {
-        return "addProduct";
+    @RequestMapping("/addProductHydrau")
+    public String addProductHydrau(Model model) {
+        model.addAttribute("hydrau", new MyHydrauliqueEntity());
+        return "addProductHydrau";
+    }
+
+    @RequestMapping("/addProductElec")
+    public String addProductElec(Model model) {
+        model.addAttribute("elec", new MyElectriqueEntity());
+        return "addProductElec";
     }
 
     @RequestMapping("/addUser")

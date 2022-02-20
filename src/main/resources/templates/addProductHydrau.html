@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Update Product</title>
+    <title>Ajouter produit hydrau</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -33,40 +33,39 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form" th:action="@{/process_edit_product_hyrdo}" th:object="${}" method="post">
+            <form class="login100-form validate-form" th:action="@{/add_product_hydrau_success}" th:object="${hydrau}" method="post">
                 <span class="login100-form-title p-b-26">
-                    Modifier un produit
+                    Ajouter un produit hydraulique
                 </span>
 
                 <div class="wrap-input100">
-                    <span><b>Nom</b></span>
-                    <input class="input100" type="text" name="nom" th:field="*{nomoutil}" required>
+                    <input class="input100" type="text" name="first-name" th:field="*{nomoutil}" required>
+                    <span class="focus-input100" data-placeholder="Nom de l'outil"></span>
                 </div>
 
                 <div class="wrap-input100">
-                    <span><b>Puissance</b></span>
-                    <input class="input100" type="text" name="puissance" th:field="*{pression}" required>
+                    <input class="input100" type="text" name="name" th:field="*{pression}" required>
+                    <span class="focus-input100" data-placeholder="Pression"></span>
                 </div>
 
                 <div class="wrap-input100">
-                    <span><b>Description</b></span>
-                    <input class="input100" type="text" name="description" th:field="*{description}" required>
+                    <input class="input100" type="text" name="name" th:field="*{description}" required>
+                    <span class="focus-input100" data-placeholder="Description"></span>
                 </div>
 
                 <div class="wrap-input100">
-                    <span><b>Prix</b></span>
-                    <input class="input100" type="text" name="description" th:field="*{prix}" required>
+                    <input class="input100" type="text" name="name" th:field="*{prix}" required>
+                    <span class="focus-input100" data-placeholder="Prix"></span>
                 </div>
 
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button class="login100-form-btn">
-                            Enregistrer
+                            Ajouter
                         </button>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>

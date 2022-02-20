@@ -9,6 +9,7 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
           crossorigin="anonymous" />
+
 </head>
 <body>
 <br>
@@ -46,28 +47,26 @@
             <td sec:authorize="hasAnyAuthority('ADMIN')">
                 <a th:href="@{'/editProductElec/' + ${electrique.getIdelec()}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/deleteProduct/' + ${electrique.getIdelec()}}">Delete</a>
+                <a th:href="@{'/deleteProductHydrau/' + ${electrique.getIdelec()}}">Delete</a>
             </td>
         </tr>
         </tbody>
 
         <tbody>
-        <tr th:each="hydrolique: ${hrepo}">
-            <td th:text="Hydrolique" />
-            <td th:text="${hydrolique.nomoutil}" />
-            <td th:text="${hydrolique.idhyd}" />
-            <td th:text="${hydrolique.pression}" />
-            <td th:text="${hydrolique.description}" />
-            <td th:text="${hydrolique.prix}" />
+        <tr th:each="hydraulique: ${hrepo}">
+            <td th:text="Hydraulique" />
+            <td th:text="${hydraulique.nomoutil}" />
+            <td th:text="${hydraulique.idhyd}" />
+            <td th:text="${hydraulique.pression}" />
+            <td th:text="${hydraulique.description}" />
+            <td th:text="${hydraulique.prix}" />
             <!-- Todo -->
             <td th:text="22" />
 
             <td sec:authorize="hasAnyAuthority('ADMIN')">
-                <a th:href="@{'/editProductHydro/' + ${hydrolique.getIdhyd()}}">Edit</a>
+                <a th:href="@{'/editProductHydrau/' + ${hydraulique.getIdhyd()}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/deleteProduct/' + ${hydrolique.getIdhyd()}}">Delete</a>
-                <br>
-                Marche pas
+                <a th:href="@{'/deleteProductHydrau/' + ${hydraulique.getIdhyd()}}">Delete</a>
             </td>
         </tr>
         </tbody>
@@ -75,8 +74,11 @@
     </table>
 
     <center>
-        <form th:action="@{/addProduct}" method="post">
-            <input type= "submit" value="Ajouter un produit (A faire)"/>
+        <form th:action="@{/addProductHydrau}" method="post">
+            <button type="submit" class="btn btn-info" >Ajouter produit hydraulique</button>
+        </form><br>
+        <form th:action="@{/addProductElec}" method="post">
+            <button type="submit" class="btn btn-info" >Ajouter produit Electrique (marche pas)</button>
         </form>
     </center>
     <div align="center">

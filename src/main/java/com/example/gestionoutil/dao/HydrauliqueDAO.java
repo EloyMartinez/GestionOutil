@@ -16,7 +16,7 @@ public class HydrauliqueDAO {
         EntityTransaction et = em.getTransaction();
 
         et.begin();
-        if (hydraulique.getIdhyd() == 0)
+        if (hydraulique.getIdhyd() == null)
             em.persist(hydraulique);
         else
             em.merge(hydraulique);

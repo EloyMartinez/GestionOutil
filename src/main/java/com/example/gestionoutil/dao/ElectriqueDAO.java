@@ -16,7 +16,7 @@ public class ElectriqueDAO {
         EntityTransaction et = em.getTransaction();
 
         et.begin();
-        if (electrique.getIdelec() == 0)
+        if (electrique.getIdelec() == null)
             em.persist(electrique);
         else
             em.merge(electrique);
