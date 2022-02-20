@@ -125,27 +125,10 @@ public class AppController {
         return "redirect:/admin_user";
     }
 
-<<<<<<< HEAD
     @Autowired
     private ElecService Eservice;
     @Autowired
     private HidraService Hservice;
-
-
-    @RequestMapping("/search")
-    public String search( Model model, String keyword) {
-        if(keyword!=null) {
-            List<MyElectriqueEntity> listE = Eservice.getByKeyword(keyword);
-            model.addAttribute("electric", listE);
-            List<MyHydrauliqueEntity> listH = Hservice.getByKeyword(keyword);
-            model.addAttribute("hidra", listH);
-        }else {
-            List<MyElectriqueEntity> listE = Eservice.getAllShops();
-            model.addAttribute("electric", listE);}
-            List<MyHydrauliqueEntity> listH = Hservice.getByKeyword(keyword);
-            model.addAttribute("hidra", listH);
-        return "list";
-    }
 
     @PostMapping("/process_edit_product_elec")
     public String processEditProductElec(MyElectriqueEntity electrique){
@@ -154,14 +137,12 @@ public class AppController {
         return "redirect:/admin_product";
     }
 
-
     @PostMapping("/process_edit_product_hyrdo")
     public String processEditProductHydro(MyHydrauliqueEntity hydraulique){
         hydraulique.edit(selectedHyrdolique);
         hydrauliqueDAO.save(hydraulique);
         return "redirect:/admin_product";
     }
-
 
     //REQUEST MAPPING
     @RequestMapping("/descriptionEl")
@@ -184,8 +165,6 @@ public class AppController {
         mav.addObject("client", client);
         return mav;
     }
-
-
 
     @RequestMapping("/editProductElec/{id}")
     public ModelAndView showEditProductElecForm(@PathVariable(name="id") Long id) {
