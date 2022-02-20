@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/vendor/**","/js/**", "/noname/**"
         };
         String[] adminPermitted = new String[]{
-                "/admin_user", "/admin_product"
+                "/admin_user", "/admin_product", "/editProductElec", "/editProductHydro"
         };
         http.authorizeRequests()
                 .antMatchers(permitted).permitAll()
@@ -61,7 +61,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout().permitAll()
                 .and()
-                .exceptionHandling().accessDeniedPage("/403")
-        ;
+                .exceptionHandling().accessDeniedPage("/403");
     }
 }

@@ -44,7 +44,7 @@
             <!-- Todo -->
             <td th:text="22" />
             <td sec:authorize="hasAnyAuthority('ADMIN')">
-                <a th:href="@{'/editProduct/' + ${electrique.getIdelec()}}">Edit</a>
+                <a th:href="@{'/editProductElec/' + ${electrique.getIdelec()}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a th:href="@{'/deleteProduct/' + ${electrique.getIdelec()}}">Delete</a>
             </td>
@@ -63,7 +63,7 @@
             <td th:text="22" />
 
             <td sec:authorize="hasAnyAuthority('ADMIN')">
-                <a th:href="@{'/editProduct/' + ${hydrolique.getIdhyd()}}">Edit</a>
+                <a th:href="@{'/editProductHydro/' + ${hydrolique.getIdhyd()}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a th:href="@{'/deleteProduct/' + ${hydrolique.getIdhyd()}}">Delete</a>
                 <br>

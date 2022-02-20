@@ -97,4 +97,12 @@ public class MyHydrauliqueEntity {
         result = 31 * result + (idoutil != null ? idoutil.hashCode() : 0);
         return Math.toIntExact(result);
     }
+
+    public void edit(MyHydrauliqueEntity oldHydraulique){
+        if (this.idhyd == null) this.idhyd = oldHydraulique.idhyd;
+        if (this.pression == null) this.pression = oldHydraulique.pression;
+        if (this.nomoutil == null) this.nomoutil = oldHydraulique.nomoutil;
+        if (this.description== null) this.description = oldHydraulique.description;
+        if (this.prix== null) this.prix = oldHydraulique.prix;
+    }
 }

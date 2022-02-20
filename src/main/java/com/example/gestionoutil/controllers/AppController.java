@@ -2,6 +2,7 @@ package com.example.gestionoutil.controllers;
 
 import com.example.gestionoutil.dao.ClientDAO;
 import com.example.gestionoutil.dao.ElectriqueDAO;
+import com.example.gestionoutil.dao.HydrauliqueDAO;
 import com.example.gestionoutil.entity.MyClientEntity;
 import com.example.gestionoutil.entity.MyElectriqueEntity;
 import com.example.gestionoutil.entity.MyHydrauliqueEntity;
@@ -34,10 +35,12 @@ public class AppController {
 
     private ClientDAO clientDAO = new ClientDAO();
     private ElectriqueDAO electiqueDAO = new ElectriqueDAO();
+    private HydrauliqueDAO hydrauliqueDAO = new HydrauliqueDAO();
 
 
     public static MyClientEntity selectedUser;
     public static MyElectriqueEntity selectedElectrique;
+    public static MyHydrauliqueEntity selectedHyrdolique;
 
 
     //GET MAPPING
@@ -151,10 +154,17 @@ public class AppController {
         return "list";
     }
 
-    @PostMapping("/process_edit_product")
-    public String processEditProduct(MyElectriqueEntity electrique){
+    @PostMapping("/process_edit_product_elec")
+    public String processEditProductElec(MyElectriqueEntity electrique){
         electrique.edit(selectedElectrique);
         electiqueDAO.save(electrique);
+        return "redirect:/admin_product";
+    }
+
+    @PostMapping("/process_edit_product_hyrdo")
+    public String processEditProductHydro(MyHydrauliqueEntity hydraulique){
+        hydraulique.edit(selectedHyrdolique);
+        hydrauliqueDAO.save(hydraulique);
         return "redirect:/admin_product";
     }
 
@@ -183,14 +193,24 @@ public class AppController {
     }
 
 
-    @RequestMapping("/editProduct/{id}")
-    public ModelAndView showEditProductForm(@PathVariable(name="id") Long id) {
-        ModelAndView mav = new ModelAndView("editProduct");
+    @RequestMapping("/editProductElec/{id}")
+    public ModelAndView showEditProductElecForm(@PathVariable(name="id") Long id) {
+        ModelAndView mav = new ModelAndView("editProductElec");
         MyElectriqueEntity electrique = electiqueDAO.getById(id);
         selectedElectrique = electrique;
-        mav.addObject("electrique", electrique);
+        mav.addObject("editProductElec", electrique);
         return mav;
     }
+
+    @RequestMapping("/editProductHydro/{id}")
+    public ModelAndView showEditProductHydroForm(@PathVariable(name="id") Long id) {
+        ModelAndView mav = new ModelAndView("editProductHydro");
+        MyHydrauliqueEntity hydraulique = hydrauliqueDAO.getById(id);
+        selectedHyrdolique = hydraulique;
+        mav.addObject("editProductHydro", hydraulique);
+        return mav;
+    }
+
 
 
     @RequestMapping("/deleteUser/{id}")
