@@ -40,12 +40,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         String[] permitted = new String[]{
-                "/", "/register","/about",
-                "/list", "/index", "/process_register"
+                "/", "/register", "/about", "/process_register"
         };
         String[] resourcesPermitted = new String[]{
-                "/bootstrap/**", "/css/**", "/fonts/**", "images/**",
-                "/vendor/**","/js/**", "/noname/**"
+                "/bootstrap/**", "/css/**", "/fonts/**", "/images/**",
+                "/vendor/**", "/js/**", "/noname/**"
         };
         String[] adminPermitted = new String[]{
                 "/admin_user", "/admin_product", "/editProductElec", "/editProductHydrau", "/addProductElec",
@@ -55,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(permitted).permitAll()
                 .antMatchers(resourcesPermitted).permitAll()
                 .antMatchers(adminPermitted).hasAnyAuthority("ADMIN")
-                .anyRequest().authenticated() //TODO: ne pas oublier de décommenter
+                .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/index")

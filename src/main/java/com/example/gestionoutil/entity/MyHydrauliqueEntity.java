@@ -63,13 +63,9 @@ public class MyHydrauliqueEntity {
         return Base64.getEncoder().encodeToString(image);
     }
 
-
-
     public void setImage(byte[] image) {
         this.image = image;
     }
-
-
 
     public String getDescription() {
         return description;
