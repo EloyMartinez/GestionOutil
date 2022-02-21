@@ -8,16 +8,18 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
           crossorigin="anonymous"/>
+    <link th:href="@{/css/main.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
 <br>
 <center>
-    <h3 th:inline="text">Bienvenue Admin</h3>
+    <h3 th:inline="text">Bienvenue [[${#httpServletRequest.remoteUser}]]</h3>
 </center>
 
 <div class="container">
 
-    <h3>List User</h3>
+    <h3>Liste des utilisateurs</h3>
     <table class="table table-bordered table-striped">
 
         <thead>
@@ -54,12 +56,15 @@
 
     </table>
 
-    <center>
+    <div style="text-align: center;">
         <form th:action="@{/addUser}" method="post">
-            <button type="submit" class="btn btn-info" >Ajouter un utilisateur</button>
+            <button type="submit" class="btn btn-info">Ajouter un utilisateur</button>
         </form>
-    </center>
-    <div align="center">
+    </div>
+    <div style="text-align: center;">
+        <button class="btn btn-primary" onclick="window.location.href='/index'">Retour à la page principale</button>
+    </div>
+    <div style="text-align: center;">
         &nbsp
         &nbsp
         <form th:action="@{/logout}" method="post">
