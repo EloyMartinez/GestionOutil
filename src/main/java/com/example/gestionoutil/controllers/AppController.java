@@ -1,5 +1,8 @@
 package com.example.gestionoutil.controllers;
 
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.example.gestionoutil.dao.ClientDAO;
 import com.example.gestionoutil.dao.ElectriqueDAO;
 import com.example.gestionoutil.dao.HydrauliqueDAO;

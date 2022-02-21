@@ -117,8 +117,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="ElectricTool: ${electric}">
-                        <td><img alt="Mjolnir" th:src="@{/images/Mjolnir.png}"></td>
-                        <!--TODO: image à rendre dynamique avec BDD-->
+                        <td> <img th:src="*{'data:image/png;base64,'+ ElectricTool.displayImage()}"  width="50" height="50"/> </td>
                         <td th:text="${ElectricTool.getNomoutil()}"></td>
                         <td th:text="${ElectricTool.getPrix()}"></td>
                         <td th:text="${ElectricTool.getDescription()}"></td>
@@ -136,8 +135,7 @@
                         </td>
                     </tr>
                     <tr th:each="HydraulicTool: ${hydraulic}">
-                        <td><img alt="Mjolnir" th:src="@{/images/Mjolnir.png}"></td>
-                        <!--TODO: image à rendre dynamique avec BDD-->
+                        <td> <img th:src="*{'data:image/png;base64,'+ HydraulicTool.displayImage()}"  width="50" height="50"/> </td>
                         <td th:text="${HydraulicTool.getNomoutil()}"></td>
                         <td th:text="${HydraulicTool.getPrix()}"></td>
                         <td th:text="${HydraulicTool.getDescription()}"></td>
