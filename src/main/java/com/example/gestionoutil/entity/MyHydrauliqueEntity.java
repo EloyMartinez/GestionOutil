@@ -61,11 +61,7 @@ public class MyHydrauliqueEntity {
     }
 
     public String displayImage() {
-        try {
-            return Base64.getEncoder().encodeToString(image);
-        } catch (Exception ignored) {
-        }
-        return "Image not found";
+        return Base64.getEncoder().encodeToString(image);
     }
 
     public void setImage(byte[] image) {

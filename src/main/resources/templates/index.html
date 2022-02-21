@@ -34,7 +34,7 @@
                 </form>
                 <ul id="topMenu" class="nav pull-right">
                     <li class=""><a th:href="@{/#}">Nos magasins</a></li>
-                    <li class=""><a th:href="@{/login}">Mon profil</a></li>
+                    <li class=""><a th:href="@{/#}">Mon profil</a></li>
                     <li class=""><a th:href="@{/#}">Mon inventaire</a></li>
                     <li class=""><a th:href="@{/#}">Mon panier</a></li>
                 </ul>
@@ -131,6 +131,7 @@
                                 <input style="display: none" type="hidden" th:value="*{description}"
                                        name="description"/>
                                 <input style="display: none" type="hidden" th:value="*{prix}" name="prix"/>
+                                <input style="display: none" type="hidden" th:value="*{image}" name="image"/>
                                 <input type="submit" value="Description"/>
                             </form>
                         </td>
@@ -150,6 +151,7 @@
                                 <input style="display: none" type="hidden" th:value="*{description}"
                                        name="description"/>
                                 <input style="display: none" type="hidden" th:value="*{prix}" name="prix"/>
+                                <input style="display: none" type="hidden" th:value="*{image}" name="image"/>
                                 <input type="submit" value="Description"/>
                             </form>
                         </td>

@@ -162,13 +162,15 @@ public class AppController {
     //REQUEST MAPPING
     @RequestMapping("/descriptionEl")
     public String descriptionEl(Model model, MyElectriqueEntity ent) {
-        model.addAttribute("elec", ent);
+        MyElectriqueEntity myElectriqueEntity = electiqueDAO.getById(ent.getIdelec());
+        model.addAttribute("elec", myElectriqueEntity);
         return "descriptionEl";
     }
 
     @RequestMapping("/descriptionHy")
     public String descriptionHi(Model model, MyHydrauliqueEntity ent) {
-        model.addAttribute("hydrau", ent);
+        MyHydrauliqueEntity myHydrauliqueEntity= hydrauliqueDAO.getById(ent.getIdhyd());
+        model.addAttribute("hydrau", myHydrauliqueEntity);
         return "descriptionHy";
     }
 
@@ -245,7 +247,7 @@ public class AppController {
     @RequestMapping("/search")
     public String showToolOfType(Model model, String toolType, String keyword) { //TODO: envoyer une erreur si pas d'objet dans la catégorie
         //TODO: outils manuels à rejouter
-        if (keyword != "") {
+        if (!Objects.equals(keyword, "")) {
             if (Objects.equals(toolType, "electric")) {
                 List<MyElectriqueEntity> listE = eService.getByKeyword(keyword);
                 model.addAttribute("electric", listE);
