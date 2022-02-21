@@ -27,7 +27,7 @@
         <thead>
         <tr>
             <th>Catégorie</th>
-            <th>Name</th>
+            <th>Nom</th>
             <th>id</th>
             <th>Puissance</th>
             <th>Description</th>
@@ -80,19 +80,18 @@
 
     <div style="text-align: center;">
         <form th:action="@{/addProductHydrau}" method="post">
-            <button type="submit" class="btn btn-info">Ajouter produit hydraulique</button>
+            <button type="submit" class="btn btn-info">Ajouter produit Hydraulique</button>
         </form>
-        <br>
         <form th:action="@{/addProductElec}" method="post">
-            <button type="submit" class="btn btn-info">Ajouter produit Electrique</button>
+            <button type="submit" class="btn btn-info">Ajouter produit Électrique</button>
         </form>
     </div>
     <div style="text-align: center;">
-        <button class="btn btn-primary" onclick="window.location.href='/index'">Retour à la page principale</button>
+        <button class="btn btn-info" onclick="window.location.href='/index'">Retour à la page principale</button>
     </div>
-    <div style="text-align: center;">
+    <div style="text-align: center; padding-top: 20px">
         <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Logout"/>
+            <button class="btn btn-info" type="submit">Se déconnecter</button>
         </form>
     </div>
 

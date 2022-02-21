@@ -26,7 +26,7 @@
         <tr>
             <th>Client ID</th>
             <th>Nom</th>
-            <th>Prenom</th>
+            <th>Prénom</th>
             <th>Adresse</th>
             <th>Date de naissance</th>
             <th>Téléphone</th>
@@ -62,13 +62,11 @@
         </form>
     </div>
     <div style="text-align: center;">
-        <button class="btn btn-primary" onclick="window.location.href='/index'">Retour à la page principale</button>
+        <button class="btn btn-info" onclick="window.location.href='/index'">Retour à la page principale</button>
     </div>
-    <div style="text-align: center;">
-        &nbsp
-        &nbsp
+    <div style="text-align: center; padding-top: 20px">
         <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Logout"/>
+            <button class="btn btn-info" type="submit">Se déconnecter</button>
         </form>
     </div>
 </div>
