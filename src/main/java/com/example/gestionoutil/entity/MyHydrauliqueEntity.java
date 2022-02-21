@@ -1,4 +1,5 @@
 package com.example.gestionoutil.entity;
+
 import javax.persistence.*;
 import java.util.Base64;
 
@@ -59,8 +60,12 @@ public class MyHydrauliqueEntity {
         return image;
     }
 
-    public String displayImage(){
-        return Base64.getEncoder().encodeToString(image);
+    public String displayImage() {
+        try {
+            return Base64.getEncoder().encodeToString(image);
+        } catch (Exception ignored) {
+        }
+        return "Image not found";
     }
 
     public void setImage(byte[] image) {
@@ -113,11 +118,11 @@ public class MyHydrauliqueEntity {
         return Math.toIntExact(result);
     }
 
-    public void edit(MyHydrauliqueEntity oldHydraulique){
+    public void edit(MyHydrauliqueEntity oldHydraulique) {
         if (this.idhyd == null) this.idhyd = oldHydraulique.idhyd;
         if (this.pression == null) this.pression = oldHydraulique.pression;
         if (this.nomoutil == null) this.nomoutil = oldHydraulique.nomoutil;
-        if (this.description== null) this.description = oldHydraulique.description;
-        if (this.prix== null) this.prix = oldHydraulique.prix;
+        if (this.description == null) this.description = oldHydraulique.description;
+        if (this.prix == null) this.prix = oldHydraulique.prix;
     }
 }

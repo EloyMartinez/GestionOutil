@@ -56,17 +56,17 @@
                 </form>
             </td>
         </tr>
-        <tr th:each="hidraTool: ${hidra}"
-            th:some-field="${hidraTool.nomoutil}" onclick="rowClicked(this.getAttribute('some-field'))">
+        <tr th:each="hydrauTool: ${hydrau}"
+            th:some-field="${hydrauTool.nomoutil}" onclick="rowClicked(this.getAttribute('some-field'))">
 
-            <td th:text="${hidraTool.nomoutil}"></td>
-            <td th:text="${hidraTool.idhyd}"></td>
-            <td th:text="${hidraTool.pression}"></td>
-            <td th:text="${hidraTool.description}"></td>
-            <td th:text="${hidraTool.prix}"></td>
+            <td th:text="${hydrauTool.nomoutil}"></td>
+            <td th:text="${hydrauTool.idhyd}"></td>
+            <td th:text="${hydrauTool.pression}"></td>
+            <td th:text="${hydrauTool.description}"></td>
+            <td th:text="${hydrauTool.prix}"></td>
 
             <td>
-                <form th:action="@{/descriptionHi}" method="post" th:object="${hidraTool}">
+                <form th:action="@{/descriptionHi}" method="post" th:object="${hydrauTool}">
                     <input style="display: none" type="hidden" th:value="*{nomoutil}" name="nomoutil"/>
                     <input style="display: none" type="hidden" th:value="*{idhyd}" name="idhyd"/>
                     <input style="display: none" type="hidden" th:value="*{idoutil}" name="idoutil"/>

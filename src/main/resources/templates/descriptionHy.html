@@ -20,11 +20,11 @@
     </thead>
     <tbody>
     <tr>
-        <td><img th:src="*{'data:image/png;base64,' + elec.displayImage()}"  width="120" height="120" alt=""/></td>
-        <td th:text="${elec.getNomoutil()}"></td>
-        <td th:text="${elec.getPrix()}"></td>
-        <td th:text="${elec.getPuissance()}"></td>
-        <td th:text="${elec.getDescription()}"></td>
+        <td><img th:src="*{'data:image/png;base64,' + hydrau.displayImage()}" width="120" height="120" alt=""/></td>
+        <td th:text="${hydrau.getNomoutil()}"></td>
+        <td th:text="${hydrau.getPrix()}"></td>
+        <td th:text="${hydrau.getPression()}"></td>
+        <td th:text="${hydrau.getDescription()}"></td>
     </tr>
     </tbody>
 </table>

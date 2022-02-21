@@ -49,7 +49,7 @@
             <!-- Sidebar ================================================== -->
             <div id="sidebar" class="span3">
                 <div class="well well-small"><a id="myCart" th:href="@{/#}"><img
-                        th:src="@{/images/cart.png}" alt="cart">3 Items in your cart <span
+                        th:src="@{/images/cart.png}" alt="cart">Voir mon panier [3]<span
                         class="badge badge-warning pull-right">$155.00</span></a></div>
                 <ul id="sideManu" class="nav nav-tabs nav-stacked">
                     <li class="subMenu open"><a> ÉLECTRIQUE [230]</a>
@@ -117,7 +117,8 @@
                     </thead>
                     <tbody>
                     <tr th:each="ElectricTool: ${electric}">
-                        <td> <img th:src="*{'data:image/png;base64,'+ ElectricTool.displayImage()}"  width="50" height="50"/> </td>
+                        <td><img th:src="*{'data:image/png;base64,'+ ElectricTool.displayImage()}" width="120"
+                                 height="120" alt="Image"/></td>
                         <td th:text="${ElectricTool.getNomoutil()}"></td>
                         <td th:text="${ElectricTool.getPrix()}"></td>
                         <td th:text="${ElectricTool.getDescription()}"></td>
@@ -135,12 +136,13 @@
                         </td>
                     </tr>
                     <tr th:each="HydraulicTool: ${hydraulic}">
-                        <td> <img th:src="*{'data:image/png;base64,'+ HydraulicTool.displayImage()}"  width="50" height="50"/> </td>
+                        <td><img th:src="*{'data:image/png;base64,' + HydraulicTool.displayImage()}" width="120"
+                                 height="120"/></td>
                         <td th:text="${HydraulicTool.getNomoutil()}"></td>
                         <td th:text="${HydraulicTool.getPrix()}"></td>
                         <td th:text="${HydraulicTool.getDescription()}"></td>
                         <td>
-                            <form th:action="@{/descriptionHi}" method="post" th:object="${HydraulicTool}">
+                            <form th:action="@{/descriptionHy}" method="post" th:object="${HydraulicTool}">
                                 <input style="display: none" type="hidden" th:value="*{nomoutil}" name="nomoutil"/>
                                 <input style="display: none" type="hidden" th:value="*{idhyd}" name="idhyd"/>
                                 <input style="display: none" type="hidden" th:value="*{idoutil}" name="idoutil"/>

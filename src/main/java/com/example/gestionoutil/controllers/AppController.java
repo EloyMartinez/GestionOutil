@@ -1,7 +1,6 @@
 package com.example.gestionoutil.controllers;
 
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.example.gestionoutil.dao.ClientDAO;
 import com.example.gestionoutil.dao.ElectriqueDAO;
@@ -13,12 +12,11 @@ import com.example.gestionoutil.repositories.ElectricRepository;
 import com.example.gestionoutil.repositories.ClientRepository;
 import com.example.gestionoutil.repositories.HydraulicRepository;
 import com.example.gestionoutil.services.ElecService;
-import com.example.gestionoutil.services.HidraService;
+import com.example.gestionoutil.services.HydrauService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelExtensionsKt;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,7 +35,7 @@ public class AppController {
     @Autowired
     private ElecService eService;
     @Autowired
-    private HidraService hService;
+    private HydrauService hService;
 
     private ClientDAO clientDAO = new ClientDAO();
     private ElectriqueDAO electiqueDAO = new ElectriqueDAO();
@@ -81,7 +79,7 @@ public class AppController {
     @GetMapping("/list")
     public String list(Model model) {
         model.addAttribute("electric", eRepo.findAll());
-        model.addAttribute("hidra", hRepo.findAll());
+        model.addAttribute("hydrau", hRepo.findAll());
         return "list";
     }
 
@@ -145,7 +143,7 @@ public class AppController {
     @Autowired
     private ElecService Eservice;
     @Autowired
-    private HidraService Hservice;
+    private HydrauService Hservice;
 
     @PostMapping("/process_edit_product_elec")
     public String processEditProductElec(MyElectriqueEntity electrique){
@@ -168,10 +166,10 @@ public class AppController {
         return "descriptionEl";
     }
 
-    @RequestMapping("/descriptionHi")
+    @RequestMapping("/descriptionHy")
     public String descriptionHi(Model model, MyHydrauliqueEntity ent) {
-        model.addAttribute("hidr", ent);
-        return "descriptionHi";
+        model.addAttribute("hydrau", ent);
+        return "descriptionHy";
     }
 
     @RequestMapping("/editUser/{id}")
