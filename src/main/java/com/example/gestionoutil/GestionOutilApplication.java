@@ -42,28 +42,5 @@ public class GestionOutilApplication {
 
         clientDAO.save(client);
         clientDAO.save(client1);*/
-
-        String path = "C:\\Users\\Alexandre\\Pictures\\images";
-        String fullPath ="C:\\Users\\Alexandre\\Pictures\\images\\glock.jpg";
-        String fileName = "glock.jpg";
-        MyHydrauliqueEntity entity = new MyHydrauliqueEntity();
-        entity.setNomoutil("glock3");
-        entity.setPression(45L);
-        entity.setDescription("new glock");
-        entity.setPrix(100d);
-
-        try{
-            File image = new File(fullPath);
-            byte[] imageData = Files.readAllBytes(image.toPath());
-            entity.setImage(imageData);
-            HydrauliqueDAO dao = new HydrauliqueDAO();
-            dao.save(entity);
-            System.out.println("image inserted");
-        }
-        catch (Exception exception){
-            System.out.println(exception.getMessage());
-        }
-
-
     }
 }

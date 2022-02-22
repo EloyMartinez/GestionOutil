@@ -39,6 +39,12 @@ public class MyElectriqueEntity {
         return description;
     }
 
+    public String getShortDescription() {
+        if (description.length() > 150)
+            return description.substring(0, 150) + " [...]";
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -67,7 +73,9 @@ public class MyElectriqueEntity {
         this.idelec = idelec;
     }
 
-    public Long getPuissance() { return puissance;}
+    public Long getPuissance() {
+        return puissance;
+    }
 
     public void setPuissance(Long puissance) {
         this.puissance = puissance;
@@ -85,7 +93,7 @@ public class MyElectriqueEntity {
         return image;
     }
 
-    public String displayImage(){
+    public String displayImage() {
         return Base64.getEncoder().encodeToString(image);
     }
 
@@ -115,12 +123,12 @@ public class MyElectriqueEntity {
         return Math.toIntExact(result);
     }
 
-    public void edit(MyElectriqueEntity oldElectrique){
+    public void edit(MyElectriqueEntity oldElectrique) {
         if (this.idelec == null) this.idelec = oldElectrique.idelec;
         if (this.puissance == null) this.puissance = oldElectrique.puissance;
         if (this.nomoutil == null) this.nomoutil = oldElectrique.nomoutil;
-        if (this.description== null) this.description = oldElectrique.description;
-        if (this.prix== null) this.prix = oldElectrique.prix;
-        if (this.image== null) this.image = oldElectrique.image;
+        if (this.description == null) this.description = oldElectrique.description;
+        if (this.prix == null) this.prix = oldElectrique.prix;
+        if (this.image == null) this.image = oldElectrique.image;
     }
 }
