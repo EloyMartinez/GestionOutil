@@ -43,7 +43,7 @@ public class GestionOutilApplication {
         clientDAO.save(client);
         clientDAO.save(client1);*/
 
-        String path = "C:\\Users\\Alexandre\\Pictures\\images";
+       /* String path = "C:\\Users\\Alexandre\\Pictures\\images";
         String fullPath ="C:\\Users\\Alexandre\\Pictures\\images\\glock.jpg";
         String fileName = "glock.jpg";
         MyHydrauliqueEntity entity = new MyHydrauliqueEntity();
@@ -63,7 +63,7 @@ public class GestionOutilApplication {
         catch (Exception exception){
             System.out.println(exception.getMessage());
         }
-
+*/
 
     }
 }

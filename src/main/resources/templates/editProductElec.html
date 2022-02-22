@@ -50,14 +50,14 @@
 
                 <div class="wrap-input100">
                     <span><b>Description</b></span>
-                    <input class="input100" type="text" name="description" th:field="*{description}" required>
+                    <textarea class="input100" name="description" th:field="*{description}" required/>
                 </div>
 
                 <div class="wrap-input100">
                     <span><b>Prix</b></span>
                     <input class="input100" type="text" name="description" th:field="*{prix}" required>
                 </div>
-<!--
+
                 <div class="wrap-input100">
                     <span><b>Image actuelle</b></span>
                     <img th:src="*{'data:image/png;base64,'+ displayImage()}"  width="100" height="100"/>
@@ -66,7 +66,7 @@
                     <span><b>Changer d'image</b></span>
                     <input type="file" name="file" accept="image/png, image/jpeg">
                 </div>
--->
+
 
 
 

@@ -1,6 +1,5 @@
 package com.example.gestionoutil.controllers;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.gestionoutil.dao.ClientDAO;
