@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>no name</title>
@@ -37,6 +37,10 @@
                     <li class=""><a th:href="@{/#}">Mon profil</a></li>
                     <li class=""><a th:href="@{/#}">Mon inventaire</a></li>
                     <li class=""><a th:href="@{/#}">Mon panier</a></li>
+                </ul>
+                <ul class="nav pull-right" style="left: 475px" sec:authorize="hasAnyAuthority('ADMIN')">
+                    <li class=""><a th:href="@{/admin_user}">Gestion utilisateurs</a></li>
+                    <li class=""><a th:href="@{/admin_product}">Gestion produits</a></li>
                 </ul>
             </div>
         </div>

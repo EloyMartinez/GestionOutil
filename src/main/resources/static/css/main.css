@@ -718,6 +718,10 @@ iframe {
 
 /* Footer section--------------- */
 #footerSection {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background: #3f3e3e;
     color: white;
     padding: 28px 0 44px;
