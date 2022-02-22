@@ -1,5 +1,7 @@
 package com.example.gestionoutil.entity;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.awt.*;
 import java.util.Base64;
@@ -119,6 +121,6 @@ public class MyElectriqueEntity {
         if (this.nomoutil == null) this.nomoutil = oldElectrique.nomoutil;
         if (this.description== null) this.description = oldElectrique.description;
         if (this.prix== null) this.prix = oldElectrique.prix;
-
+        if (this.image== null) this.image = oldElectrique.image;
     }
 }

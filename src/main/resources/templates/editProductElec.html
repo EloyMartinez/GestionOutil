@@ -33,7 +33,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form" th:action="@{/process_edit_product_elec}" th:object="${editProductElec}" method="post">
+            <form class="login100-form validate-form" th:action="@{/process_edit_product_elec}" th:object="${editProductElec}" method="post" enctype="multipart/form-data">
                 <span class="login100-form-title p-b-26">
                     Modifier un produit
                 </span>
@@ -62,7 +62,9 @@
                     <span><b>Image actuelle</b></span>
                     <img th:src="*{'data:image/png;base64,'+ displayImage()}"  width="100" height="100"/>
                     <br>
-                    <input type="file" name="avatar" accept="image/png, image/jpeg">
+                    <br>
+                    <span><b>Changer d'image</b></span>
+                    <input type="file" name="file" accept="image/png, image/jpeg">
                 </div>
 
 

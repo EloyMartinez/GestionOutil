@@ -1,5 +1,6 @@
 package com.example.gestionoutil.controllers;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.gestionoutil.dao.ClientDAO;
@@ -18,8 +19,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Objects;
 
@@ -113,16 +118,20 @@ public class AppController {
         return "redirect:/admin_user";
     }
 
+    MultipartFile imageFile;
+
     @RequestMapping(value = "/add_product_elec_success", method = RequestMethod.POST)
-    public String add_product_elec_success(MyElectriqueEntity electrique){
+    public String add_product_elec_success(MyElectriqueEntity electrique,@RequestParam("file") MultipartFile file) throws IOException {
         electiqueDAO = new ElectriqueDAO();
+        electrique.setImage(file.getBytes());
         electiqueDAO.save(electrique);
         return "redirect:/admin_product";
     }
 
     @RequestMapping(value = "/add_product_hydrau_success", method = RequestMethod.POST)
-    public String add_product_hydrau_success(MyHydrauliqueEntity hydraulique){
+    public String add_product_hydrau_success(MyHydrauliqueEntity hydraulique, @RequestParam("file") MultipartFile file) throws IOException {
         hydrauliqueDAO = new HydrauliqueDAO();
+        hydraulique.setImage(file.getBytes());
         hydrauliqueDAO.save(hydraulique);
         return "redirect:/admin_product";
     }
@@ -146,17 +155,37 @@ public class AppController {
     private HydrauService Hservice;
 
     @PostMapping("/process_edit_product_elec")
-    public String processEditProductElec(MyElectriqueEntity electrique){
-        electrique.edit(selectedElectrique);
-        electiqueDAO.save(electrique);
-        return "redirect:/admin_product";
+    public String processEditProductElec(MyElectriqueEntity electrique, @RequestParam("file") MultipartFile file) throws IOException {
+
+        try {
+            if(!file.isEmpty()) {
+                electrique.setImage(file.getBytes());
+            }
+            //selectedElectrique.getImage();
+            electrique.edit(selectedElectrique);
+            electiqueDAO.save(electrique);
+            return "redirect:/admin_product";
+        } catch (Exception e){
+            electrique.edit(selectedElectrique);
+            electiqueDAO.save(electrique);
+            return "redirect:/admin_product";
+        }
     }
 
     @PostMapping("/process_edit_product_hydrau")
-    public String processEditProductHydrau(MyHydrauliqueEntity hydraulique){
-        hydraulique.edit(selectedHydraulique);
-        hydrauliqueDAO.save(hydraulique);
-        return "redirect:/admin_product";
+    public String processEditProductHydrau(MyHydrauliqueEntity hydraulique, @RequestParam("file") MultipartFile file) throws IOException {
+        try {
+            if(!file.isEmpty()) {
+                hydraulique.setImage(file.getBytes());
+            }
+            hydraulique.edit(selectedHydraulique);
+            hydrauliqueDAO.save(hydraulique);
+            return "redirect:/admin_product";
+        } catch (Exception e){
+            hydraulique.edit(selectedHydraulique);
+            hydrauliqueDAO.save(hydraulique);
+            return "redirect:/admin_product";
+        }
     }
 
     //REQUEST MAPPING
@@ -184,7 +213,7 @@ public class AppController {
     }
 
     @RequestMapping("/editProductElec/{id}")
-    public ModelAndView showEditProductElecForm(@PathVariable(name="id") Long id) {
+    public ModelAndView showEditProductElecForm(@PathVariable(name="id") Long id) throws IOException {
         ModelAndView mav = new ModelAndView("editProductElec");
         MyElectriqueEntity electrique = electiqueDAO.getById(id);
         selectedElectrique = electrique;
@@ -193,9 +222,10 @@ public class AppController {
     }
 
     @RequestMapping("/editProductHydrau/{id}")
-    public ModelAndView showEditProductHydrauForm(@PathVariable(name="id") Long id) {
+    public ModelAndView showEditProductHydrauForm(@PathVariable(name="id") Long id) throws IOException {
         ModelAndView mav = new ModelAndView("editProduitHydrau");
         MyHydrauliqueEntity hydraulique = hydrauliqueDAO.getById(id);
+        //hydraulique.setImage(imageFile.getBytes());
         selectedHydraulique = hydraulique;
         mav.addObject("editProductHydrau", hydraulique);
         return mav;

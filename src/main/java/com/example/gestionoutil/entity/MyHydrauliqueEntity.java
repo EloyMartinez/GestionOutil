@@ -120,5 +120,7 @@ public class MyHydrauliqueEntity {
         if (this.nomoutil == null) this.nomoutil = oldHydraulique.nomoutil;
         if (this.description == null) this.description = oldHydraulique.description;
         if (this.prix == null) this.prix = oldHydraulique.prix;
+        if (this.image== null) this.image = oldHydraulique.image;
+
     }
 }
