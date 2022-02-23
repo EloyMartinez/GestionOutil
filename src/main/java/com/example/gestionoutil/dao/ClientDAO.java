@@ -37,6 +37,12 @@ public class ClientDAO {
         return em.find(MyClientEntity.class, id);
     }
 
+    public MyClientEntity getClientByEmail(String courriel){
+        EntityManager em = emf.createEntityManager();
+        List<MyClientEntity> list = em.createNativeQuery("select * from client where courriel = '" + courriel + "'").getResultList();
+        return list.get(0);
+    }
+
     public void delete(Long id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
