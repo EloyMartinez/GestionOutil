@@ -30,7 +30,7 @@ import java.util.Objects;
 @Controller
 public class AppController {
 
-    /*@Autowired
+    @Autowired
     private ClientRepository clientRepository;
     @Autowired
     private ElectricRepository eRepo;
@@ -39,7 +39,7 @@ public class AppController {
     @Autowired
     private ElecService eService;
     @Autowired
-    private HydrauService hService;*/
+    private HydrauService hService;
 
     private ClientDAO clientDAO = new ClientDAO();
     private ElectriqueDAO electiqueDAO = new ElectriqueDAO();
@@ -57,18 +57,15 @@ public class AppController {
 
     @GetMapping("/admin_user")
     public String admin_user(Model model) {
-        //List<MyClientEntity> listClient = clientRepository.findAll();
-        List<MyClientEntity> listClient = clientDAO.getAll();
+        List<MyClientEntity> listClient = clientRepository.findAll();
         model.addAttribute("listClients", listClient);
         return "admin_user";
     }
 
     @GetMapping("/admin_product")
     public String admin_product(Model model) {
-        //model.addAttribute("hrepo", hRepo.findAll());
-        //model.addAttribute("erepo", eRepo.findAll());
-        model.addAttribute("hrepo", hydrauliqueDAO.getAll());
-        model.addAttribute("erepo", electiqueDAO.getAll());
+        model.addAttribute("hrepo", hRepo.findAll());
+        model.addAttribute("erepo", eRepo.findAll());
         return "admin_product";
     }
 
@@ -85,10 +82,8 @@ public class AppController {
 
     @GetMapping("/list")
     public String list(Model model) {
-        //model.addAttribute("electric", eRepo.findAll());
-        //model.addAttribute("hydrau", hRepo.findAll());
-        model.addAttribute("electric", electiqueDAO.getAll());
-        model.addAttribute("hydrau", hydrauliqueDAO.getAll());
+        model.addAttribute("electric", eRepo.findAll());
+        model.addAttribute("hydrau", hRepo.findAll());
         return "list";
     }
 
@@ -103,6 +98,7 @@ public class AppController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         client.setMdpcli(passwordEncoder.encode(client.getMdpcli()));
         client.setAdmin(false);
+        clientDAO = new ClientDAO();
         clientDAO.save(client);
         return "register_success";
     }
@@ -125,7 +121,7 @@ public class AppController {
 
     @RequestMapping(value = "/add_product_elec_success", method = RequestMethod.POST)
     public String add_product_elec_success(MyElectriqueEntity electrique,@RequestParam("file") MultipartFile file) throws IOException {
-        //electiqueDAO = new ElectriqueDAO();
+        electiqueDAO = new ElectriqueDAO();
         electrique.setImage(file.getBytes());
         electiqueDAO.save(electrique);
         return "redirect:/admin_product";
@@ -133,7 +129,7 @@ public class AppController {
 
     @RequestMapping(value = "/add_product_hydrau_success", method = RequestMethod.POST)
     public String add_product_hydrau_success(MyHydrauliqueEntity hydraulique, @RequestParam("file") MultipartFile file) throws IOException {
-        //hydrauliqueDAO = new HydrauliqueDAO();
+        hydrauliqueDAO = new HydrauliqueDAO();
         hydraulique.setImage(file.getBytes());
         hydrauliqueDAO.save(hydraulique);
         return "redirect:/admin_product";
@@ -152,10 +148,10 @@ public class AppController {
         return "redirect:/admin_user";
     }
 
-    /*@Autowired
+    @Autowired
     private ElecService Eservice;
     @Autowired
-    private HydrauService Hservice;*/
+    private HydrauService Hservice;
 
     @PostMapping("/process_edit_product_elec")
     public String processEditProductElec(MyElectriqueEntity electrique, @RequestParam("file") MultipartFile file) throws IOException {
@@ -254,10 +250,8 @@ public class AppController {
 
     @GetMapping("/index")
     public String index(Model model) {
-        //model.addAttribute("electric", eRepo.findAll());
-        //model.addAttribute("hydraulic", hRepo.findAll());
-        model.addAttribute("electric", electiqueDAO.getAll());
-        model.addAttribute("hydraulic", hydrauliqueDAO.getAll());
+        model.addAttribute("electric", eRepo.findAll());
+        model.addAttribute("hydraulic", hRepo.findAll());
         return "index";
     }
 
@@ -284,36 +278,28 @@ public class AppController {
         //TODO: outils manuels à rejouter
         if (!Objects.equals(keyword, "")) {
             if (Objects.equals(toolType, "electric")) {
-                //List<MyElectriqueEntity> listE = eService.getByKeyword(keyword);
-                List<MyElectriqueEntity> listE = electiqueDAO.getByKeyword(keyword);
+                List<MyElectriqueEntity> listE = eService.getByKeyword(keyword);
                 model.addAttribute("electric", listE);
             } else if (Objects.equals(toolType, "hydraulic")) {
-                //List<MyHydrauliqueEntity> listH = hService.getByKeyword(keyword);
-                List<MyHydrauliqueEntity> listH = hydrauliqueDAO.getByKeyword(keyword);
+                List<MyHydrauliqueEntity> listH = hService.getByKeyword(keyword);
                 model.addAttribute("hydraulic", listH);
             } else {
-                //List<MyElectriqueEntity> listE = eService.getByKeyword(keyword);
-                List<MyElectriqueEntity> listE = electiqueDAO.getByKeyword(keyword);
+                List<MyElectriqueEntity> listE = eService.getByKeyword(keyword);
                 model.addAttribute("electric", listE);
-                //List<MyHydrauliqueEntity> listH = hService.getByKeyword(keyword);
-                List<MyHydrauliqueEntity> listH = hydrauliqueDAO.getByKeyword(keyword);
+                List<MyHydrauliqueEntity> listH = hService.getByKeyword(keyword);
                 model.addAttribute("hydraulic", listH);
             }
         } else {
             if (Objects.equals(toolType, "electric")) {
-                //List<MyElectriqueEntity> listE = eService.getAll();
-                List<MyElectriqueEntity> listE = electiqueDAO.getAll();
+                List<MyElectriqueEntity> listE = eService.getAll();
                 model.addAttribute("electric", listE);
             } else if (Objects.equals(toolType, "hydraulic")) {
-                //List<MyHydrauliqueEntity> listH = hService.getAll();
-                List<MyHydrauliqueEntity> listH = hydrauliqueDAO.getAll();
+                List<MyHydrauliqueEntity> listH = hService.getAll();
                 model.addAttribute("hydraulic", listH);
             } else {
-                //List<MyElectriqueEntity> listE = eService.getAll();
-                List<MyElectriqueEntity> listE = electiqueDAO.getAll();
+                List<MyElectriqueEntity> listE = eService.getAll();
                 model.addAttribute("electric", listE);
-                //List<MyHydrauliqueEntity> listH = hService.getAll();
-                List<MyHydrauliqueEntity> listH = hydrauliqueDAO.getAll();
+                List<MyHydrauliqueEntity> listH = hService.getAll();
                 model.addAttribute("hydraulic", listH);
             }
         }
