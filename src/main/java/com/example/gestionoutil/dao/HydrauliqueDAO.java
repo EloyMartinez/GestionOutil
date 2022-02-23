@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HydrauliqueDAO {
@@ -31,6 +32,11 @@ public class HydrauliqueDAO {
     public MyHydrauliqueEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyHydrauliqueEntity.class, id);
+    }
+
+    public List<MyHydrauliqueEntity> getByKeyword(String keyword){
+        EntityManager em = emf.createEntityManager();
+        return em.createNativeQuery("select * from hydraulique where nomoutil like '%" + keyword + "%'").getResultList();
     }
 
     public void delete(Long id){

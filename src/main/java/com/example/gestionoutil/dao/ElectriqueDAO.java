@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ElectriqueDAO {
@@ -31,6 +32,11 @@ public class ElectriqueDAO {
     public MyElectriqueEntity getById(Long id){
         EntityManager em = emf.createEntityManager();
         return em.find(MyElectriqueEntity.class, id);
+    }
+
+    public List<MyElectriqueEntity> getByKeyword(String keyword){
+        EntityManager em = emf.createEntityManager();
+        return em.createNativeQuery("select * from electrique where nomoutil like '%" + keyword + "%'").getResultList();
     }
 
     public void delete(Long id){
