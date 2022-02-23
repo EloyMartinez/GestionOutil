@@ -28,6 +28,9 @@ public class MyElectriqueEntity {
     @Basic
     @Column(name = "prix")
     private Double prix;
+    @Basic
+    @Column(name = "stock")
+    private Integer stock;
     @Lob
     @Column(name = "image")
     private byte[] image;
@@ -55,6 +58,14 @@ public class MyElectriqueEntity {
 
     public void setPrix(Double prix) {
         this.prix = prix;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 
     public String getNomoutil() {
@@ -130,5 +141,6 @@ public class MyElectriqueEntity {
         if (this.description == null) this.description = oldElectrique.description;
         if (this.prix == null) this.prix = oldElectrique.prix;
         if (this.image == null) this.image = oldElectrique.image;
+        if (this.stock == null) this.stock = oldElectrique.stock;
     }
 }

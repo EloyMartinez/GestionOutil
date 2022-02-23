@@ -25,6 +25,9 @@ public class MyHydrauliqueEntity {
     @Basic
     @Column(name = "prix")
     private Double prix;
+    @Basic
+    @Column(name = "stock")
+    private Integer stock;
     @Lob
     @Column(name = "image")
     private byte[] image;
@@ -46,6 +49,14 @@ public class MyHydrauliqueEntity {
 
     public void setNomoutil(String nomoutil) {
         this.nomoutil = nomoutil;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 
     public Long getPression() {
@@ -127,6 +138,7 @@ public class MyHydrauliqueEntity {
         if (this.description == null) this.description = oldHydraulique.description;
         if (this.prix == null) this.prix = oldHydraulique.prix;
         if (this.image== null) this.image = oldHydraulique.image;
+        if (this.stock == null) this.stock = oldHydraulique.stock;
 
     }
 }

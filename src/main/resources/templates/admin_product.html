@@ -45,8 +45,7 @@
             <td th:text="${electrique.puissance}"></td>
             <td th:text="${electrique.description}"></td>
             <td th:text="${electrique.prix}"></td>
-            <!-- Todo -->
-            <td th:text="22"></td>
+            <td th:text="${electrique.stock}"></td>
             <td><img th:src="*{'data:image/png;base64,' + electrique.displayImage()}" width="100" height="100"/></td>
             <td sec:authorize="hasAnyAuthority('ADMIN')">
                 <a th:href="@{'/editProductElec/' + ${electrique.getIdelec()}}">Edit</a>
@@ -64,8 +63,7 @@
             <td th:text="${hydraulique.pression}"></td>
             <td th:text="${hydraulique.description}"></td>
             <td th:text="${hydraulique.prix}"></td>
-            <!-- Todo -->
-            <td th:text="22"></td>
+            <td th:text="${hydraulique.stock}"></td>
             <td><img th:src="*{'data:image/png;base64,'+ hydraulique.displayImage()}" width="100" height="100"/></td>
 
             <td sec:authorize="hasAnyAuthority('ADMIN')">
